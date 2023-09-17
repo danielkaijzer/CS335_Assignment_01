@@ -1,4 +1,4 @@
-#CSCI335 Assignment 01
+# CSCI335 Assignment 01
 
 a program in C++ using OOP principles and efficient linear data structures as outlined in chapters 1 and 3 in the textbook.
 Implements a simple card game.
