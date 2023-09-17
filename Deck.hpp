@@ -1,27 +1,27 @@
 /**
- * @file Card.hpp
+ * @file Deck.hpp
  * @author Daniel Kaijzer
  * @brief 
- * @version 0.3
+ * @version 0.1
  * @date 2023-09-17
  * 
  * @copyright Copyright (c) 2023
  * 
  */
 
-#ifndef CARD_
-#define CARD_
+#ifndef DECK_
+#define DECK_
 
-#include <iostream>
+#include "Card.hpp"
 
-class Card{
+class Deck{
     private:
     public:
-        Card(); // default constructor
+        Deck(); // Default Constructor
 
         void Print(); // Test method
 };
 
-#include "Card.cpp"
+#include "Deck.cpp"
 
 #endif
