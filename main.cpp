@@ -14,9 +14,9 @@
 using namespace std;
 
 int main(){
-    Card c1;
-    c1.Print();
+    ActionCard c1;
+    c1.Play();
 
-    Deck d1;
-    d1.Print();
+    Deck<int> d1;
+    std::cout << d1.isEmpty() << std::endl;
 }

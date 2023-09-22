@@ -15,10 +15,16 @@
 #include "Card.hpp"
 
 class ActionCard : public Card {
-    ActionCard();
+    public:
+        ActionCard() = default;
+        void Play() override;
 
+    private:
+        // method to parse from input file and translate it to executable instructions
+        void getInstructionsfromInput();
+        // executes instructions
+        void executeInstructions();
 };
 
 #include "ActionCard.cpp"
-
-#endif ACTION_CARD_
+#endif

@@ -12,12 +12,25 @@
 #ifndef DECK_
 #define DECK_
 
-#include "Card.hpp"
+#include "ActionCard.hpp"
+#include <vector>
 
+template <class ItemType>
 class Deck{
     private:
+        int deck_size_ = 0;
+        std::vector<ItemType> cards_;
+
     public:
         Deck(); // Default Constructor
+        ~Deck();
+
+        void AddCard();
+        void Draw();
+        void Shuffle();
+
+        bool isEmpty();
+
 
         void Print(); // Test method
 };

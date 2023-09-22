@@ -11,10 +11,37 @@
 
 #include "Deck.hpp"
 
-Deck::Deck(){
+template <class ItemType>
+Deck<ItemType>::Deck(){
 
 }
 
-void Deck::Print(){
+template <class ItemType>
+void Deck<ItemType>::Print(){
     std::cout << "Hello World" << std::endl;
+}
+
+template <class ItemType>
+Deck<ItemType>::~Deck(){
+
+}
+
+template <class ItemType>
+void Deck<ItemType>::AddCard(){
+    return;
+}
+
+template <class ItemType>
+void Deck<ItemType>::Draw(){
+    return;
+}
+
+template <class ItemType>
+void Deck<ItemType>::Shuffle(){
+    return;
+}
+
+template <class ItemType>
+bool Deck<ItemType>::isEmpty(){
+    return (deck_size_ == 0);
 }

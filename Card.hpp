@@ -42,9 +42,9 @@ class Card{
         // Destructor
         ~Card();
 
-        // virtual void Play() = 0;
-
         void Print(); // Test method
+
+        virtual void Play() =0;
 };
 
 #include "Card.cpp"
