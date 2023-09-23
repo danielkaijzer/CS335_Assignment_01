@@ -13,8 +13,12 @@
 #define CARD_GAME_
 
 class CardGame{
+    private:
+        const int TARGET_SCORE_ = 50;
     public:
         CardGame(); // Default Constructor
+
+        void StartGame();
 };
 
 #include "CardGame.cpp"

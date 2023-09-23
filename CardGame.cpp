@@ -14,3 +14,7 @@
 CardGame::CardGame(){
 
 }
+
+void CardGame::StartGame(){
+
+}

@@ -17,22 +17,23 @@
 
 template <class ItemType>
 class Deck{
-    private:
-        int deck_size_ = 0;
-        std::vector<ItemType> cards_;
+private:
+    int deck_size_ = 0;
+    std::vector<ItemType> cards_;
 
-    public:
-        Deck(); // Default Constructor
-        ~Deck();
+public:
+    Deck(); // Default Constructor
+    ~Deck();
 
-        void AddCard();
-        void Draw();
-        void Shuffle();
+    // used when decks are initially constructed from cards in the file
+    void AddCard();
+    void Draw();
+    void Shuffle();
 
-        bool isEmpty();
+    bool isEmpty();
 
 
-        void Print(); // Test method
+    void Print(); // Test method
 };
 
 #include "Deck.cpp"

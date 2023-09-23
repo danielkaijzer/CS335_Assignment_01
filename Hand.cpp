@@ -14,3 +14,15 @@
 Hand::Hand(){
 
 }
+
+void Hand::Reverse(){
+    // Reverse order we push and pop from hand
+
+    reverse_flag_ = true;
+
+    return;
+}
+
+void Hand::PlayCard(){
+    
+}

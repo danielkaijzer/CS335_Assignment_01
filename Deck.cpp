@@ -26,6 +26,11 @@ Deck<ItemType>::~Deck(){
 
 }
 
+/**
+ * @brief used when decks are initially constructed from cards in the file
+ * 
+ * @return template <class ItemType> 
+ */
 template <class ItemType>
 void Deck<ItemType>::AddCard(){
     return;
