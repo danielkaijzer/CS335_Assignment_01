@@ -15,10 +15,15 @@
 class CardGame{
     private:
         const int TARGET_SCORE_ = 50;
+
+        // Helper methods for CardGame()
+        void readFromInputFile();
     public:
         CardGame(); // Default Constructor
+        // CardGame(input_file); Paramerized Constructor
 
         void StartGame();
+
 };
 
 #include "CardGame.cpp"
