@@ -17,7 +17,7 @@
 class ActionCard : public Card {
     public:
         ActionCard() = default;
-        void Play() override;
+        int Play() override;
         std::string instructions_;
 
     private:

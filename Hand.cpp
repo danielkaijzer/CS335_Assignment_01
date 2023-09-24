@@ -24,5 +24,27 @@ void Hand::Reverse(){
 }
 
 void Hand::PlayCard(){
+    if (!reverse_flag_){
+        hand.back().Play();
+        // delete PointCard object here?
+        hand.pop_back();
+    }
+    else{
+        hand.front().Play();
+        // delete PointCard object here?
+        hand.pop_front();
+    }
+
+
     
+}
+
+void Hand::AddCard(PointCard new_card){
+    if (!reverse_flag_){
+        hand.push_front(new_card);
+    }
+    else{
+        hand.push_back(new_card);
+    }
+
 }

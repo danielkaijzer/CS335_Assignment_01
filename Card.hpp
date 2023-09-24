@@ -44,7 +44,7 @@ class Card{
 
         void Print(); // Test method
 
-        virtual void Play() =0;
+        virtual int Play() =0;
 };
 
 #include "Card.cpp"

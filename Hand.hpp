@@ -23,8 +23,11 @@ class Hand{
     private:
         std::deque<PointCard> hand;
         bool reverse_flag_ = false;
+        int score_ = 0;
     public:
         Hand(); // default constructor
+
+        void AddCard(PointCard new_card);
 
         void PlayCard();
 

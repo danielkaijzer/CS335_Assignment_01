@@ -11,7 +11,7 @@
 
 #include "ActionCard.hpp"
 
-void ActionCard::Play(){
+int ActionCard::Play(){
     std::cout << "Play Action Card\n";
 }
 

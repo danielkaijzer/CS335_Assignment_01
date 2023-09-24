@@ -23,7 +23,7 @@ void Deck<ItemType>::Print(){
 
 template <class ItemType>
 Deck<ItemType>::~Deck(){
-
+ //
 }
 
 /**

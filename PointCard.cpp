@@ -15,6 +15,14 @@ int PointCard::textToInt(){
     return 0;
 }
 
-void PointCard::Play(){
+int PointCard::Play(){
+    int points = points_for_this_card;
+
     std::cout << "Play point card\n";
+
+    return points;
+}
+
+int PointCard::getPoints(){
+    return points_for_this_card;
 }

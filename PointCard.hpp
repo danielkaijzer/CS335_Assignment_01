@@ -17,9 +17,11 @@
 class PointCard : public Card
 {
 private:
+    int points_for_this_card = 1;
+    int getPoints();
 public:
     PointCard() = default;
-    void Play() override;
+    int Play() override;
     int textToInt();
 };
 
