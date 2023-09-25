@@ -13,6 +13,7 @@
 #define DECK_
 
 #include "ActionCard.hpp"
+#include "PointCard.hpp"
 #include <vector>
 
 template <class ItemType>
@@ -26,7 +27,11 @@ public:
     ~Deck();
 
     // used when decks are initially constructed from cards in the file
-    void AddCard();
+
+    // CAN ALSO TRY DOING void AddCard(ItemType new_card)
+    void AddCard(PointCard new_card);
+    void AddCard(ActionCard new_card);
+
     void Draw();
     void Shuffle();
 

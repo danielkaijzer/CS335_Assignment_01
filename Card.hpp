@@ -42,6 +42,11 @@ class Card{
         // Destructor
         ~Card();
 
+        void setType(std::string *type);
+        void setText(std::string *text);
+        void setImage(std::vector<int> *image);
+
+
         void Print(); // Test method
 
         virtual int Play() =0;

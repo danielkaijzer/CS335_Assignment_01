@@ -32,7 +32,18 @@ Deck<ItemType>::~Deck(){
  * @return template <class ItemType> 
  */
 template <class ItemType>
-void Deck<ItemType>::AddCard(){
+void Deck<ItemType>::AddCard(PointCard new_card){
+
+    // make card and add to deck
+
+    return;
+}
+
+template <class ItemType>
+void Deck<ItemType>::AddCard(ActionCard new_card){
+
+    // make card and add to deck
+    
     return;
 }
 

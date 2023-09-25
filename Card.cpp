@@ -55,6 +55,18 @@ Card::~Card(){
     // delete type_, text_, image_;
 }
 
+void Card::setType(std::string *type){
+    type_ = type;
+}
+
+void Card::setText(std::string *text){
+    text_ = text;
+
+}
+void Card::setImage(std::vector<int> *image){
+    image_ = image;
+}
+
 void Card::Print(){
     std::cout << "Hello world" << std::endl;
 }
