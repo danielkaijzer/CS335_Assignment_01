@@ -46,6 +46,10 @@ class Card{
         void setText(std::string *text);
         void setImage(std::vector<int> *image);
 
+        void convertInputStringtoType(std::string type);
+        void convertInputStringtoText(std::string text);
+        void convertInputStringtoImage(std::string image);
+
 
         void Print(); // Test method
 

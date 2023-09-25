@@ -17,6 +17,13 @@ CardGame::CardGame(){
 
 CardGame::CardGame(std::ifstream& input_file){
 
+    if (!input_file.is_open()){
+        std::cerr << "Error opening input file.\n";
+        return;
+    }
+
+    
+
     std::string line;
 
     while(getline(input_file,line)){

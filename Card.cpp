@@ -67,6 +67,19 @@ void Card::setImage(std::vector<int> *image){
     image_ = image;
 }
 
+void Card::convertInputStringtoType(std::string type){
+
+}
+
+void Card::convertInputStringtoText(std::string text){
+
+}
+
+void Card::convertInputStringtoImage(std::string image){
+
+}
+
+
 void Card::Print(){
     std::cout << "Hello world" << std::endl;
 }
