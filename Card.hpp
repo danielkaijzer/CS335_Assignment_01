@@ -25,6 +25,8 @@ class Card{
     public:
         Card() = default; // default constructor
 
+        Card(std::string type, std::string text);
+
         // BIG 5
 
         // Copy Constructor
@@ -43,8 +45,10 @@ class Card{
         ~Card();
 
         void setType(std::string *type);
-        void setText(std::string *text);
+        void setText(std::string text);
         void setImage(std::vector<int> *image);
+
+        std::string getText();
 
         void convertInputStringtoType(std::string type);
         void convertInputStringtoText(std::string text);

@@ -1,0 +1,2 @@
+type: action card
+text: draw 1 card

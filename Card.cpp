@@ -11,6 +11,12 @@
 
 #include "Card.hpp"
 
+// Parameterized Constructor
+Card::Card(std::string type, std::string text){
+    type_ = new std::string(type);
+    text_ = new std::string(text);
+}
+
 // Copy Constructor
 Card::Card(const Card & rhs){
     type_ = new std::string{*rhs.type_};
@@ -59,12 +65,16 @@ void Card::setType(std::string *type){
     type_ = type;
 }
 
-void Card::setText(std::string *text){
-    text_ = text;
+void Card::setText(std::string text){
+    text_ = new std::string(text);
 
 }
 void Card::setImage(std::vector<int> *image){
     image_ = image;
+}
+
+std::string Card::getText(){
+    return *text_;
 }
 
 void Card::convertInputStringtoType(std::string type){

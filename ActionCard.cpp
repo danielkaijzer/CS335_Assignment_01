@@ -11,8 +11,13 @@
 
 #include "ActionCard.hpp"
 
+ActionCard::ActionCard(std::string text){
+    this->setText(text);
+}
+
 int ActionCard::Play(){
     std::cout << "Play Action Card\n";
+    return 0;
 }
 
 

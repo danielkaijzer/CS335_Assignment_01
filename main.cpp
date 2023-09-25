@@ -9,14 +9,18 @@
  * 
  */
 
-#include "Deck.hpp"
+#include "CardGame.hpp"
 
 using namespace std;
 
 int main(){
-    ActionCard c1;
-    c1.Play();
+    std::ifstream infile("input_0.txt");    
 
-    Deck<int> d1;
-    std::cout << d1.isEmpty() << std::endl;
+    CardGame c1 = CardGame(infile);
+
+    // ActionCard c1;
+    // c1.Play();
+
+    // Deck<int> d1;
+    // std::cout << d1.isEmpty() << std::endl;
 }

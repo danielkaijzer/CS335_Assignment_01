@@ -18,7 +18,11 @@ Deck<ItemType>::Deck(){
 
 template <class ItemType>
 void Deck<ItemType>::Print(){
-    std::cout << "Hello World" << std::endl;
+    for (auto itr = cards_.begin(); itr != cards_.end(); ++itr){
+        std::cout << itr->getText() << std::endl;
+    }
+
+    // std::cout << "Hello World" << std::endl;
 }
 
 template <class ItemType>
@@ -41,10 +45,7 @@ void Deck<ItemType>::AddCard(PointCard new_card){
 
 template <class ItemType>
 void Deck<ItemType>::AddCard(ActionCard new_card){
-
-    // make card and add to deck
-    
-    return;
+    cards_.push_back(new_card);
 }
 
 template <class ItemType>
