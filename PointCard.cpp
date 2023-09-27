@@ -11,6 +11,10 @@
 
 #include "PointCard.hpp"
 
+PointCard::PointCard(std::string text){
+    this->setText(text);
+}
+
 int PointCard::textToInt(){
     return 0;
 }

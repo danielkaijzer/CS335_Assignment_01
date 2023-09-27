@@ -21,6 +21,7 @@ private:
     int getPoints();
 public:
     PointCard() = default;
+    PointCard(std::string text);
     int Play() override;
     int textToInt();
 };

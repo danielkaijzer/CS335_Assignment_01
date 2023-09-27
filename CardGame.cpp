@@ -23,11 +23,8 @@ CardGame::CardGame(std::ifstream& input_file){
     }
     std::string line, type, text;
 
-    Deck<ActionCard> d1;
-
-    // std::vector<ActionCard> ActionCards;
-    // std::vector<PointCard> PointCards;
-    // ActionCard c1;
+    Deck<ActionCard> ActionDeck;
+    Deck<PointCard> PointDeck;
 
     while(getline(input_file,line)){
         // std::cout << line << std::endl;
@@ -57,14 +54,20 @@ CardGame::CardGame(std::ifstream& input_file){
             // c1.setText(text);
 
             if (type == "action"){
-                ActionCard newCard(text);
-                d1.AddCard(newCard);
+                ActionCard newActionCard(text);
+                ActionDeck.AddCard(newActionCard);
+            }
+            else if (type == "points"){
+                PointCard newPointCard(text);
+                PointDeck.AddCard(newPointCard);
+
             }
         }
 
     }
 
-    d1.Print();
+    ActionDeck.Print();
+    PointDeck.Print();
 
     // make some code to parse through input file
 
