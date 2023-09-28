@@ -1,2 +1,5 @@
 type: action card
 text: draw 1 card
+
+type: points card
+text: 25 points

@@ -30,21 +30,8 @@ Deck<ItemType>::~Deck(){
  //
 }
 
-/**
- * @brief used when decks are initially constructed from cards in the file
- * 
- * @return template <class ItemType> 
- */
 template <class ItemType>
-void Deck<ItemType>::AddCard(PointCard new_card){
-
-    // make card and add to deck
-
-    return;
-}
-
-template <class ItemType>
-void Deck<ItemType>::AddCard(ActionCard new_card){
+void Deck<ItemType>::AddCard(ItemType new_card){
     cards_.push_back(new_card);
 }
 

@@ -16,14 +16,15 @@
 
 class PointCard : public Card
 {
-private:
-    int points_for_this_card = 1;
-    int getPoints();
 public:
     PointCard() = default;
     PointCard(std::string text);
+
     int Play() override;
     int textToInt();
+private:
+    int points_for_this_card = 1;
+    int getPoints();
 };
 
 #include "PointCard.cpp"

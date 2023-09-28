@@ -19,8 +19,8 @@
 template <class ItemType>
 class Deck{
 private:
-    int deck_size_ = 0;
     std::vector<ItemType> cards_;
+    int deck_size_ = cards_.size();
 
 public:
     Deck(); // Default Constructor
@@ -29,8 +29,7 @@ public:
     // used when decks are initially constructed from cards in the file
 
     // CAN ALSO TRY DOING void AddCard(ItemType new_card)
-    void AddCard(PointCard new_card);
-    void AddCard(ActionCard new_card);
+    void AddCard(ItemType new_card);
 
     void Draw();
     void Shuffle();
