@@ -29,7 +29,7 @@ CardGame::CardGame(std::ifstream& input_file){
     // Abort trap: 6
 
     Deck<ActionCard> ActionDeck;
-    // Deck<PointCard> PointDeck;
+    Deck<PointCard> PointDeck;
 
     while(getline(input_file,line)){
         // std::cout << line << std::endl;
@@ -65,15 +65,15 @@ CardGame::CardGame(std::ifstream& input_file){
             }
             else if (type == "points"){
                 PointCard newPointCard(text);
-                // PointDeck.AddCard(newPointCard);
+                PointDeck.AddCard(newPointCard);
                 // std::cout << newPointCard.getText() << std::endl;
             }
         }
 
     }
 
-    // ActionDeck.Print();
-    // PointDeck.Print();
+    ActionDeck.Print();
+    PointDeck.Print();
 
     // make some code to parse through input file
 

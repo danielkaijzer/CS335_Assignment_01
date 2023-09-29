@@ -12,6 +12,7 @@
 #include "PointCard.hpp"
 
 PointCard::PointCard(std::string text){
+    this->setType("Point");
     this->setText(text);
 }
 

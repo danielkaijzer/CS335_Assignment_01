@@ -18,40 +18,40 @@
 
 class Card{
     private:
-        std::string *type_;
-        std::string *text_;
+        std::string type_;
+        std::string text_;
         // std::vector<int> *image_;
 
     public:
         Card() = default; // default constructor
 
-        Card(std::string type, std::string text);
+        // Card(std::string type, std::string text);
 
         // BIG 5
 
         // Copy Constructor
-        Card(const Card & rhs);
+        // Card(const Card & rhs);
 
-        // Copy Assignment Operator
-        Card & operator=(const Card & rhs);
+        // // Copy Assignment Operator
+        // Card & operator=(const Card & rhs);
 
-        // Move Constructor
-        Card(Card && rhs);
+        // // Move Constructor
+        // Card(Card && rhs);
 
-        // Move Assignment Operator
-        Card & operator=(Card && rhs);
+        // // Move Assignment Operator
+        // Card & operator=(Card && rhs);
 
         // Destructor
         ~Card();
 
-        void setType(std::string *type);
+        void setType(std::string type);
         void setText(std::string text);
         // void setImage(std::vector<int> *image);
 
         std::string getText();
 
-        void convertInputStringtoType(std::string type);
-        void convertInputStringtoText(std::string text);
+        // void convertInputStringtoType(std::string type);
+        // void convertInputStringtoText(std::string text);
         // void convertInputStringtoImage(std::string image);
 
 
