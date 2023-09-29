@@ -21,8 +21,6 @@ void Deck<ItemType>::Print(){
     for (auto itr = cards_.begin(); itr != cards_.end(); ++itr){
         std::cout << itr->getText() << std::endl;
     }
-
-    // std::cout << "Hello World" << std::endl;
 }
 
 template <class ItemType>

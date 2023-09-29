@@ -20,7 +20,7 @@ class Card{
     private:
         std::string *type_;
         std::string *text_;
-        std::vector<int> *image_;
+        // std::vector<int> *image_;
 
     public:
         Card() = default; // default constructor
@@ -46,13 +46,13 @@ class Card{
 
         void setType(std::string *type);
         void setText(std::string text);
-        void setImage(std::vector<int> *image);
+        // void setImage(std::vector<int> *image);
 
         std::string getText();
 
         void convertInputStringtoType(std::string type);
         void convertInputStringtoText(std::string text);
-        void convertInputStringtoImage(std::string image);
+        // void convertInputStringtoImage(std::string image);
 
 
         void Print(); // Test method

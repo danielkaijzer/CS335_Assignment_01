@@ -15,18 +15,18 @@ PointCard::PointCard(std::string text){
     this->setText(text);
 }
 
-int PointCard::textToInt(){
-    return 0;
-}
+// int PointCard::textToInt(){
+//     return 0;
+// }
 
 int PointCard::Play(){
-    int points = points_for_this_card;
+    // int points = points_for_this_card;
 
     std::cout << "Play point card\n";
 
-    return points;
+    return 0;
 }
 
-int PointCard::getPoints(){
-    return points_for_this_card;
-}
+// int PointCard::getPoints(){
+//     return points_for_this_card;
+// }

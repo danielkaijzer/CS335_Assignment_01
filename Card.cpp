@@ -21,7 +21,7 @@ Card::Card(std::string type, std::string text){
 Card::Card(const Card & rhs){
     type_ = new std::string{*rhs.type_};
     text_ = new std::string{*rhs.text_};
-    image_ = new std::vector<int>{*rhs.image_};
+    // image_ = new std::vector<int>{*rhs.image_};
 }
 
 // Copy Assignment Operator
@@ -29,7 +29,7 @@ Card & Card::operator=(const Card & rhs){
     if (this != &rhs){
         *type_ = *rhs.type_;
         *text_ = *rhs.text_;
-        *image_ = *rhs.image_;
+        // *image_ = *rhs.image_;
     }
     return *this;
 }
@@ -44,7 +44,7 @@ Card::Card(Card && rhs){
     delete rhs.text_;
     rhs.text_ = nullptr; 
 
-    image_ = std::move(rhs.image_);
+    // image_ = std::move(rhs.image_);
 }
 
 // Move Assignment Operator
@@ -52,13 +52,16 @@ Card & Card::operator=(Card && rhs){
     // Use std::swap for all data members
     std::swap(type_,rhs.type_);
     std::swap(text_, rhs.text_);
-    std::swap(image_, rhs.image_);
+    // std::swap(image_, rhs.image_);
     return *this;
 }
 
 // Destructor
 Card::~Card(){
-    // delete type_, text_, image_;
+    // delete type_;
+    // *type_ = nullptr;
+    // delete text_;
+    // *text_ = nullptr;
 }
 
 void Card::setType(std::string *type){
@@ -69,9 +72,9 @@ void Card::setText(std::string text){
     text_ = new std::string(text);
 
 }
-void Card::setImage(std::vector<int> *image){
-    image_ = image;
-}
+// void Card::setImage(std::vector<int> *image){
+//     image_ = image;
+// }
 
 std::string Card::getText(){
     return *text_;
@@ -85,9 +88,9 @@ void Card::convertInputStringtoText(std::string text){
 
 }
 
-void Card::convertInputStringtoImage(std::string image){
+// void Card::convertInputStringtoImage(std::string image){
 
-}
+// }
 
 
 void Card::Print(){

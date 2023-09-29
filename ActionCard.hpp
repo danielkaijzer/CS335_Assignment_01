@@ -20,9 +20,8 @@ class ActionCard : public Card {
         ActionCard(std::string text);
 
         int Play() override;
-        std::string instructions_;
-
     private:
+        std::string instructions_;
         // method to parse from input file and translate it to executable instructions
         void getInstructionsfromInput();
         // executes instructions

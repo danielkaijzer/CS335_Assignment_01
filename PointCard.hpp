@@ -21,10 +21,10 @@ public:
     PointCard(std::string text);
 
     int Play() override;
-    int textToInt();
+    // int textToInt();
 private:
-    int points_for_this_card = 1;
-    int getPoints();
+    // int points_for_this_card = 1;
+    // int getPoints();
 };
 
 #include "PointCard.cpp"
