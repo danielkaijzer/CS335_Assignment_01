@@ -21,18 +21,13 @@ CardGame::CardGame(std::ifstream& input_file){
         std::cerr << "Error opening input file.\n";
         return;
     }
+
     std::string line, type, text;
-
-
-    // BUG TO FIX: CANNOT CREATE MORE THAN ONE DECK WITHOUT GETTING:
-    // libc++abi: terminating with uncaught exception of type std::bad_alloc: std::bad_alloc
-    // Abort trap: 6
 
     Deck<ActionCard> ActionDeck;
     Deck<PointCard> PointDeck;
 
     while(getline(input_file,line)){
-        // std::cout << line << std::endl;
         std::stringstream ss(line);
         std::string word;
 
@@ -40,18 +35,10 @@ CardGame::CardGame(std::ifstream& input_file){
 
         if (word == "type:"){
             ss >> type;
-            // if (type == "action"){
-            //     ActionCard new_Card;
-            // }
-            // else if(type == "point"){
-            //     PointCard new_Card;
-            // }
-            // std::cout << type << std::endl;
         }
         else if (word == "text:"){
 
             text.clear();
-            // std::cout << word << std::endl;
 
             if (type == "action"){
                 while (ss >> word){
@@ -60,21 +47,19 @@ CardGame::CardGame(std::ifstream& input_file){
                 }
                 ActionCard newActionCard(text);
                 ActionDeck.AddCard(newActionCard);
-                // std::cout << newActionCard.getText() << std::endl;
             }
             else if (type == "points"){
                 ss >> word;
                 text = word;
                 PointCard newPointCard(text);
                 PointDeck.AddCard(newPointCard);
-                std::cout << newPointCard.getPoints() << std::endl;
             }
         }
 
     }
 
-    // ActionDeck.Print();
-    // PointDeck.Print();
+    ActionDeck.Print();
+    PointDeck.Print();
 
     // make some code to parse through input file
 
