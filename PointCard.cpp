@@ -14,20 +14,22 @@
 PointCard::PointCard(std::string text){
     this->setType("Point");
     this->setText(text);
+    points_for_this_card = textToInt();
+
 }
 
-// int PointCard::textToInt(){
-//     return 0;
-// }
+int PointCard::textToInt(){
+    return std::stoi(this->getText());
+}
 
 int PointCard::Play(){
-    // int points = points_for_this_card;
+    int points = points_for_this_card;
 
     std::cout << "Play point card\n";
 
     return 0;
 }
 
-// int PointCard::getPoints(){
-//     return points_for_this_card;
-// }
+int PointCard::getPoints(){
+    return points_for_this_card;
+}

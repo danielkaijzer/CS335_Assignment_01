@@ -12,7 +12,7 @@
 #include "ActionCard.hpp"
 
 ActionCard::ActionCard(std::string text){
-    // this->setType("Action");
+    this->setType("Action");
     this->setText(text);
 }
 

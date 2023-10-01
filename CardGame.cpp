@@ -51,29 +51,30 @@ CardGame::CardGame(std::ifstream& input_file){
         else if (word == "text:"){
 
             text.clear();
-
-            while (ss >> word){
-                text+=word;
-                text += " ";
-            }
             // std::cout << word << std::endl;
 
             if (type == "action"){
+                while (ss >> word){
+                    text+=word;
+                    text += " ";
+                }
                 ActionCard newActionCard(text);
                 ActionDeck.AddCard(newActionCard);
                 // std::cout << newActionCard.getText() << std::endl;
             }
             else if (type == "points"){
+                ss >> word;
+                text = word;
                 PointCard newPointCard(text);
                 PointDeck.AddCard(newPointCard);
-                // std::cout << newPointCard.getText() << std::endl;
+                std::cout << newPointCard.getPoints() << std::endl;
             }
         }
 
     }
 
-    ActionDeck.Print();
-    PointDeck.Print();
+    // ActionDeck.Print();
+    // PointDeck.Print();
 
     // make some code to parse through input file
 
