@@ -1,11 +1,14 @@
 type: action card
-text: draw 1 cards
-
-type: points card
-text: 25 points
+text: draw 1 card
 
 type: action card
 text: draw 2 cards
 
-type: points card
-text: 50 points
+type: point card
+text: 25
+
+type: action card
+text: play 1 card
+
+type: action card
+text: play 2 cards

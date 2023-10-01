@@ -28,5 +28,12 @@ void ActionCard::getInstructionsfromInput(){
 }
 
 void ActionCard::executeInstructions(){
-    std::cout << "Execute ActionCard instructions\n";
+
+    // - Draw x card(s).
+    // - Play x card(s).
+    // - Reverse hand.
+    // - Swap hand with opponent.
+
+    // if draw 1 cards
+
 }
