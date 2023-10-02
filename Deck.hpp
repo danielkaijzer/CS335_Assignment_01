@@ -16,10 +16,10 @@
 #include "PointCard.hpp"
 #include <vector>
 
-template <class ItemType>
+template <class Card>
 class Deck{
 private:
-    std::vector<ItemType> cards_;
+    std::vector<Card> cards_;
     int deck_size_ = cards_.size();
 
 public:
@@ -29,7 +29,7 @@ public:
     // used when decks are initially constructed from cards in the file
 
     // CAN ALSO TRY DOING void AddCard(ItemType new_card)
-    void AddCard(ItemType new_card);
+    void AddCard(Card new_card);
 
     void Draw();
     void Shuffle();

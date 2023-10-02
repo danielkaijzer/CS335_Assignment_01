@@ -17,6 +17,7 @@
 #include <sstream>
 
 #include "Deck.hpp"
+#include "Player.hpp"
 
 class CardGame{
     private:

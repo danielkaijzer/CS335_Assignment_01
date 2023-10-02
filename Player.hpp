@@ -20,7 +20,6 @@ private:
     int score_;
 public:
     Player() = default;
-
 };
 
 #include "Player.cpp"

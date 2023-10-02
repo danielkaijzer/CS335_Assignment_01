@@ -11,39 +11,56 @@
 
 #include "Deck.hpp"
 
-template <class ItemType>
-Deck<ItemType>::Deck(){
+template <class Card>
+Deck<Card>::Deck(){
 
 }
 
-template <class ItemType>
-void Deck<ItemType>::Print(){
+template <class Card>
+void Deck<Card>::Print(){
     for (auto itr = cards_.begin(); itr != cards_.end(); ++itr){
         std::cout << itr->getText() << std::endl;
     }
 }
 
-template <class ItemType>
-Deck<ItemType>::~Deck(){
+template <class Card>
+Deck<Card>::~Deck(){
  //
 }
 
-template <class ItemType>
-void Deck<ItemType>::AddCard(ItemType new_card){
+template <class Card>
+void Deck<Card>::AddCard(Card new_card){
     cards_.push_back(new_card);
 }
 
-template <class ItemType>
-void Deck<ItemType>::Draw(){
+template <class Card>
+void Deck<Card>::Draw(){
+    // access card at top of deck
+
+    // if actioncard, execute instruction
+    // Card current_card = cards_.back();
+    if (cards_.back().getType() == "Action"){
+        cards_.back().Play();
+    }
+    else if (cards_.back().getType() == "Points"){
+        // add points card to Hand
+    }
+
+    cards_.pop_back();
+
+    // return current_card;
+
+    // if pointcard, add card to hand
+
     return;
 }
 
-template <class ItemType>
-void Deck<ItemType>::Shuffle(){
+template <class Card>
+void Deck<Card>::Shuffle(){
     return;
 }
 
-template <class ItemType>
-bool Deck<ItemType>::isEmpty(){
+template <class Card>
+bool Deck<Card>::isEmpty(){
     return (deck_size_ == 0);
 }

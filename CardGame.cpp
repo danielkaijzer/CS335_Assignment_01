@@ -47,6 +47,7 @@ CardGame::CardGame(std::ifstream& input_file){
                 }
                 ActionCard newActionCard(text);
                 ActionDeck.AddCard(newActionCard);
+
             }
             else if (type == "points"){
                 ss >> word;
@@ -60,6 +61,9 @@ CardGame::CardGame(std::ifstream& input_file){
 
     ActionDeck.Print();
     PointDeck.Print();
+
+    ActionDeck.Draw();
+    // ActionDeck.Draw(Hand,PointDeck);
 
     // make some code to parse through input file
 

@@ -79,6 +79,10 @@ std::string Card::getText(){
     return text_;
 }
 
+std::string Card::getType(){
+    return type_;
+}
+
 // void Card::convertInputStringtoType(std::string type){
 
 // }

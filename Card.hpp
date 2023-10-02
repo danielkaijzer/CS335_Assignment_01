@@ -50,6 +50,7 @@ class Card{
         // void setImage(std::vector<int> *image);
 
         std::string getText();
+        std::string getType();
 
         // void convertInputStringtoType(std::string type);
         // void convertInputStringtoText(std::string text);

@@ -17,7 +17,7 @@
 #define HAND_
 
 #include <deque>
-#include <PointCard.hpp>
+#include "PointCard.hpp"
 
 class Hand{
     private:
