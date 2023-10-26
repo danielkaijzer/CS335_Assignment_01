@@ -17,14 +17,40 @@
 class PointCard : public Card
 {
 public:
-    PointCard() = default;
-    PointCard(std::string text);
 
-    int Play() override;
-    int getPoints();
+/**
+ * @post: Construct a new Point Card object
+ */
+PointCard();
+
+/**
+ * @return true if the card is playable, false otherwise
+ * For a card to be playable, it has to be drawn and the instruction has
+    to be a valid number
+*/
+bool isPlayable() override;
+
+/**
+ * @post: Print the Point Card in the following format:
+ * Type: [CardType]
+ * Points: [Instruction]
+ * Card:
+ * [ImageData]
+ *
+ * Note: For [ImageData]: If there is no image data, print "No image data
+" instead
+ */
+void Print() const override;
+
+
+    // PointCard() = default;
+    // PointCard(std::string text);
+
+    // int Play() override;
+    // int getPoints();
 private:
-    int textToInt();
-    int points_for_this_card = 0;
+    // int textToInt();
+    // int points_for_this_card = 0;
 };
 
 #include "PointCard.cpp"
