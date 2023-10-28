@@ -11,62 +11,65 @@
 
 #include "Card.hpp"
 
-// Parameterized Constructor
-// Card::Card(std::string type, std::string text){
-//     type_ = new std::string(type);
-//     text_ = new std::string(text);
-// }
-
-// Copy Constructor
-// Card::Card(const Card & rhs){
-//     type_ = new std::string{*rhs.type_};
-//     text_ = new std::string{*rhs.text_};
-//     // image_ = new std::vector<int>{*rhs.image_};
-// }
-
-// Copy Assignment Operator
-// Card & Card::operator=(const Card & rhs){
-//     if (this != &rhs){
-//         *type_ = *rhs.type_;
-//         *text_ = *rhs.text_;
-//         // *image_ = *rhs.image_;
-//     }
-//     return *this;
-// }
-
-// Move Constructor
-// Card::Card(Card && rhs){
-//     type_ = rhs.type_;
-//     delete rhs.type_;
-//     rhs.type_ = nullptr;
-
-//     text_ = rhs.text_;
-//     delete rhs.text_;
-//     rhs.text_ = nullptr; 
-
-//     // image_ = std::move(rhs.image_);
-// }
-
-// Move Assignment Operator
-// Card & Card::operator=(Card && rhs){
-//     // Use std::swap for all data members
-//     std::swap(type_,rhs.type_);
-//     std::swap(text_, rhs.text_);
-//     // std::swap(image_, rhs.image_);
-//     return *this;
-// }
-
 // Destructor
 Card::~Card(){
-    // delete type_;
-    // delete text_;
-    // delete image_;
+    // delete &cardType_;
+    // delete &instruction_;
+    // delete &bitmap_;
 }
 
+// Copy Constructor
+Card::Card(const Card & rhs){
+    // cardType_ = new cardType{*rhs.cardType_};
+    // instruction_ = new std::string{*rhs.instruction_};
+    // bitmap_ = new int{*rhs.bitmap_};
+}
 
+// Copy Assignment Operator
+Card & Card::operator=(const Card& rhs){
+    if (this != &rhs){
+        // *cardType_ = *rhs.cardType_;
+        // *instruction_ = *rhs.instruction_;
+        // *image_ = *rhs.image_;
+    }
+    return *this;
+}
 
-void Card::setType(std::string type){
-    type_ = type;
+// Move Constructor
+Card::Card(Card && rhs){
+    // type_ = rhs.type_;
+    // delete rhs.type_;
+    // rhs.type_ = nullptr;
+
+    // text_ = rhs.text_;
+    // delete rhs.text_;
+    // rhs.text_ = nullptr; 
+
+    // image_ = std::move(rhs.image_);
+}
+
+// Move Assignment Operator
+Card & Card::operator=(Card && rhs){
+    // Use std::swap for all data members
+    // std::swap(type_,rhs.type_);
+    // std::swap(text_, rhs.text_);
+    // std::swap(image_, rhs.image_);
+    return *this;
+}
+
+Card::Card(){
+    drawn_ = false;
+}
+
+std::string Card::getType() const{
+    if (cardType_ == POINT_CARD)
+        return "POINT_CARD";
+    else
+        return "ACTION_CARD";
+}
+
+void Card::setType(const CardType& type){
+    instruction_ = type;
 }
 
 void Card::setInstruction(const std::string& instruction){
@@ -75,19 +78,15 @@ void Card::setInstruction(const std::string& instruction){
 }
 
 void Card::setImageData(int* data){
-    image_data_ = data;
+    bitmap_ = data;
 }
 
 const std::string& Card::getInstruction() const{
     return instruction_;
 }
 
-std::string Card::getType() const{
-    return type_;
-}
-
 const int* Card::getImageData() const{
-    return image_data_;
+    return bitmap_;
 }
 
 bool Card::getDrawn() const{
@@ -97,21 +96,3 @@ bool Card::getDrawn() const{
 void Card::setDrawn(const bool& drawn){
     drawn_ = drawn;
 }
-
-
-// void Card::convertInputStringtoType(std::string type){
-
-// }
-
-// void Card::convertInputStringtoText(std::string text){
-
-// }
-
-// void Card::convertInputStringtoImage(std::string image){
-
-// }
-
-
-// void Card::Print(){
-//     std::cout << "Hello world" << std::endl;
-// }
