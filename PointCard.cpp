@@ -11,25 +11,35 @@
 
 #include "PointCard.hpp"
 
-PointCard::PointCard(std::string text){
-    this->setType("Point");
-    this->setText(text);
-    points_for_this_card = textToInt();
 
+
+bool PointCard::isPlayable(){
+    return false; // TEMP
 }
 
-int PointCard::textToInt(){
-    return std::stoi(this->getText());
+void PointCard::Print() const{
+    std::cout << "Hello World\n";
 }
 
-int PointCard::Play(){
-    int points = points_for_this_card;
+// PointCard::PointCard(std::string text){
+//     this->setType("Point");
+//     this->setText(text);
+//     points_for_this_card = textToInt();
 
-    std::cout << "Play point card\n";
+// }
 
-    return 0;
-}
+// int PointCard::textToInt(){
+//     return std::stoi(this->getText());
+// }
 
-int PointCard::getPoints(){
-    return points_for_this_card;
-}
+// int PointCard::Play(){
+//     int points = points_for_this_card;
+
+//     std::cout << "Play point card\n";
+
+//     return 0;
+// }
+
+// int PointCard::getPoints(){
+//     return points_for_this_card;
+// }

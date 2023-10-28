@@ -63,25 +63,41 @@ Card::~Card(){
     // delete image_;
 }
 
+
+
 void Card::setType(std::string type){
     type_ = type;
 }
 
-void Card::setText(std::string text){
-    text_ = text;
+void Card::setInstruction(const std::string& instruction){
+    instruction_ = instruction;
 
 }
-// void Card::setImage(std::vector<int> *image){
-//     image_ = image;
-// }
 
-std::string Card::getText(){
-    return text_;
+void Card::setImageData(int* data){
+    image_data_ = data;
 }
 
-std::string Card::getType(){
+const std::string& Card::getInstruction() const{
+    return instruction_;
+}
+
+std::string Card::getType() const{
     return type_;
 }
+
+const int* Card::getImageData() const{
+    return image_data_;
+}
+
+bool Card::getDrawn() const{
+    return drawn_;
+}
+
+void Card::setDrawn(const bool& drawn){
+    drawn_ = drawn;
+}
+
 
 // void Card::convertInputStringtoType(std::string type){
 
@@ -96,6 +112,6 @@ std::string Card::getType(){
 // }
 
 
-void Card::Print(){
-    std::cout << "Hello world" << std::endl;
-}
+// void Card::Print(){
+//     std::cout << "Hello world" << std::endl;
+// }

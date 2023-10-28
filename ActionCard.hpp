@@ -1,56 +1,47 @@
-/**
- * @file ActionCard.hpp
- * @author Daniel Kaijzer
- * @brief ActionCard class, derived from Card class. Interface file.
- * @version 0.1
- * @date 2023-09-21
- * 
- * @copyright Copyright (c) 2023
- * 
- */
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name
+Date
+ActionCard.hpp defines the ActionCard class and inherits from the Card Class.
+*/
+#ifndef ACTIONCARD_HPP
+#define ACTIONCARD_HPP
 
-#ifndef ACTION_CARD_
-#define ACTION_CARD_
-
+#include <iostream>
+#include <string>
+#include <cctype>
+#include <regex>
 #include "Card.hpp"
 
-class ActionCard : public Card {
+class ActionCard : public Card
+{
     public:
-    /**
-    * @post: Construct a new Action Card object
-    */
-    ActionCard() = default;
+        /**
+         * @post: Construct a new Action Card object
+        */
+        ActionCard();
 
-    /**
-     * @return true if the card is playable, false otherwise
-     * For a card to be playable, it has to be drawn and the instruction has to be valid
-     * Valid instructions:
-     * DRAW x CARD(S) : assume x is a positive integer
-     * PLAY x CARD(S) : assume x is a positive integer
-     * REVERSE HAND : reverse the order of the cards in the hand
-     * SWAP HAND WITH OPPONENT : swap the hand with the opponent
-    */
-    virtual bool isPlayable() override;
-
-    /**
-     * @post: Print the ActionCard in the following format:
-     * Type: [CardType]
-     * Instruction: [Instruction]
-     * Card:
-     * [ImageData]
-     *
-     * Note: For [ImageData]: If there is no image data, print "No
-        image data" instead
-    */
-    virtual void Print() const override;
-
-    private:
-        // std::string instructions_;
-        // method to parse from input file and translate it to executable instructions
-        // void getInstructionsfromInput();
-        // // executes instructions
-        // void executeInstructions();
+        /**
+         * @return true if the card is playable, false otherwise
+         * For a card to be playable, it has to be drawn and the instruction has to be valid
+         * Valid instructions:
+         * DRAW x CARD(S) : assume x is a positive integer
+         * PLAY x CARD(S) : assume x is a positive integer
+         * REVERSE HAND : reverse the order of the cards in the hand
+         * SWAP HAND WITH OPPONENT : swap the hand with the opponent
+        */
+        virtual bool isPlayable() override;
+        
+        /**
+         * @post: Print the ActionCard in the following format:
+         * Type: [CardType]
+         * Instruction: [Instruction]
+         * Card: 
+         * [ImageData]
+         * 
+         * Note: For [ImageData]: If there is no image data, print "No image data" instead
+         */
+        virtual void Print() const override;
 };
-
-#include "ActionCard.cpp"
 #endif

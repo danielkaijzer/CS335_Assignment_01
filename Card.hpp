@@ -1,118 +1,111 @@
-/**
- * @file Card.hpp
- * @author Daniel Kaijzer
- * @brief 
- * @version 0.4
- * @date 2023-10-26
- * 
- * @copyright Copyright (c) 2023
- * 
- */
+/*
+CSCI335 Fall 2023
+Assignment 1 – Card Game
+Name
+Date
+Card.hpp defines the Card class and its member functions.
+*/
 
-#ifndef CARD_
-#define CARD_
+#ifndef CARD_HPP
+#define CARD_HPP
 
 #include <iostream>
-#include <vector>
 #include <string>
 
-
-class Card{
-    private:
-        std::string type_;
-        std::string text_;
-        // std::vector<int> *image_;
-
-    public:
-    /**
-     * Destructor
-     * @post: Destroy the Card object
-    */  ~Card();
-
-    /**
-     * Copy Constructor
-     * @post: Construct a new Card object
-     * @param: const reference to a Card object
-    */
-    Card(const Card& rhs);
-
-    /**
-     * Copy Assignment Operator
-     * @param const reference to a Card object
-     * @return this Card object
-     */
-    Card& operator=(const Card& rhs);
-
-    /**
-     * Move Constructor
-     * @param: rvalue reference to a Card object
-    */
-    Card(Card&& rhs);
-
-    /**
-     * Move assignment operator
-     * @param: rvalue reference to a Card object
-     * @return this card object
-    */
-    Card& operator=(Card&& rhs);
-
-    /**
-     * Default Constructor
-     * @post: Construct a new Card object
-     */
-    Card() = default;
-
-    /**
-     * @return the string representation of the card type
-     */
-    std::string getType() const;
-
-    /**
-     * @post: set the card type
-     * @param const reference to a CardType object
-     */
-    void setType(const CardType& type);
-
-    /**
-     * @return the string representation of the card instruction
-    */
-    const std::string& getInstruction() const;
-
-    /**
-     * @post: set the card instruction
-     * @param: const reference to an instruction
-     */
-    void setInstruction(const std::string& instruction);
-
-    /**
-     * @return the image data
-     */
-    const int* getImageData() const;
-
-    /**
-     * @post: Set the image data
-     * @param pointer to an array of integers
-     */
-    void setImageData(int* data);
-
-    /**
-     * @return the drawn status of the card
-    */
-    bool getDrawn() const;
-
-    /**
-     * @post: set the drawn status of the card
-     *
-     * @param: const reference to a boolean
-     */
-    void setDrawn(const bool& drawn);
-
-    // Pure Virtual Functions : No implementation required
-    virtual void Print() const = 0;
-    virtual bool isPlayable() = 0;
-
+enum CardType 
+{
+    POINT_CARD,
+    ACTION_CARD
 };
 
-#include "Card.cpp"
+class Card
+{
+    public:
+        // Big Five and Constructor
+        /**
+         * Destructor
+         * @post: Destroy the Card object
+        */
+        ~Card();
+        /**
+         * Copy Constructor
+         * @post: Construct a new Card object
+         * @param: const reference to a Card object
+        */
+        Card(const Card& rhs);
+        /**
+         * Copy Assignment Operator
+         * @param const reference to a Card object
+         * @return this Card object
+         */
+        Card& operator=(const Card& rhs);
+        /**
+         * Move Constructor
+         * @param: rvalue reference to a Card object 
+        */
+        Card(Card&& rhs);
+        /**
+         * Move assignment operator
+         * @param: rvalue reference to a Card object
+         * @return this card object
+        */
+        Card& operator=(Card&& rhs);
+        /**
+         * Default Constructor
+         * @post: Construct a new Card object 
+         */
+        Card();
+
+        /**
+         * @return the string representation of the card type
+         */
+        std::string getType() const;
+        /**
+         * @post: set the card type
+         * @param const reference to a CardType object
+         */
+        void setType(const CardType& type);
+
+        /**
+         * @return the string representation of the card instruction
+        */
+        const std::string& getInstruction() const;
+        /**
+         * @post: set the card instruction
+         * @param: const reference to an instruction 
+         */
+        void setInstruction(const std::string& instruction);
+
+        /**
+         * @return the image data
+         */
+        const int* getImageData() const;
+        /**
+         * @post: Set the image data
+         * @param pointer to an array of integers
+         */
+        void setImageData(int* data);
+
+        /**
+         * @return the drawn status of the card
+        */
+        bool getDrawn() const;
+        /**
+         * @post: set the drawn status of the card
+         * 
+         * @param: const reference to a boolean
+         */
+        void setDrawn(const bool& drawn);
+
+        // Pure Virtual Functions
+        virtual void Print() const = 0;
+        virtual bool isPlayable() = 0;
+
+    private:
+        CardType cardType_;
+        std::string instruction_;
+        int* bitmap_;
+        bool drawn_;
+};
 
 #endif
