@@ -13,9 +13,8 @@
 
 // Destructor
 Card::~Card(){
-    // delete &cardType_;
-    // delete &instruction_;
-    // delete &bitmap_;
+    delete[] bitmap_;
+    bitmap_ = nullptr;
 }
 
 // Copy Constructor
