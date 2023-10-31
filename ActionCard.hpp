@@ -20,7 +20,7 @@ class ActionCard : public Card
         /**
          * @post: Construct a new Action Card object
         */
-        ActionCard();
+        ActionCard(); 
 
         /**
          * @return true if the card is playable, false otherwise
@@ -44,4 +44,6 @@ class ActionCard : public Card
          */
         virtual void Print() const override;
 };
+
+// #include "ActionCard.cpp"
 #endif
