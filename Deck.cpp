@@ -11,56 +11,62 @@
 
 #include "Deck.hpp"
 
-template <class Card>
-Deck<Card>::Deck(){
+template <class CardType>
+Deck<CardType>::Deck(){
 
 }
 
-template <class Card>
-void Deck<Card>::Print(){
-    for (auto itr = cards_.begin(); itr != cards_.end(); ++itr){
-        std::cout << itr->getText() << std::endl;
-    }
-}
-
-template <class Card>
-Deck<Card>::~Deck(){
+template <class CardType>
+Deck<CardType>::~Deck(){
  //
 }
 
-template <class Card>
-void Deck<Card>::AddCard(Card new_card){
-    cards_.push_back(new_card);
+template <class CardType>
+void Deck<CardType>::AddCard(const CardType& card){
+    cards_.push_back(card);
 }
 
-template <class Card>
-void Deck<Card>::Draw(){
+template <class CardType>
+CardType&& Deck<CardType>::Draw(){
+
+    if (!IsEmpty()){
+        CardType&& cur = cards_.back();
+        cards_.pop_back();
+
+        return cur;
+
+    }
+
+    return;
+
+
+
     // access card at top of deck
 
     // if actioncard, execute instruction
     // Card current_card = cards_.back();
-    if (cards_.back().getType() == "Action"){
-        cards_.back().Play();
-    }
-    else if (cards_.back().getType() == "Points"){
-        // add points card to Hand
-    }
+    // if (cards_.back().getType() == "Action"){
+    //     cards_.back().Play();
+    // }
+    // else if (cards_.back().getType() == "Points"){
+    //     // add points card to Hand
+    // }
 
-    cards_.pop_back();
+    // cards_.pop_back();
 
-    // return current_card;
+    // // return current_card;
 
-    // if pointcard, add card to hand
+    // // if pointcard, add card to hand
 
+    // return;
+}
+
+template <class CardType>
+void Deck<CardType>::Shuffle(){
     return;
 }
 
-template <class Card>
-void Deck<Card>::Shuffle(){
-    return;
-}
-
-template <class Card>
-bool Deck<Card>::isEmpty(){
-    return (deck_size_ == 0);
+template <class CardType>
+bool Deck<CardType>::IsEmpty() const{
+    return (cards_.size() == 0);
 }
