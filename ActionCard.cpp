@@ -12,7 +12,7 @@
 #include "ActionCard.hpp"
 
 ActionCard::ActionCard(){
-    setType(POINT_CARD);
+    setType(ACTION_CARD);
 }
 
 
@@ -22,12 +22,5 @@ bool ActionCard::isPlayable(){
 }
 
 void ActionCard::Print() const{
-    std::cout << "Hello World\n";
+    std::cout << getInstruction();
 }
-
-//     // - Draw x card(s).
-//     // - Play x card(s).
-//     // - Reverse hand.
-//     // - Swap hand with opponent.
-
-// }
