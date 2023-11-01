@@ -18,7 +18,9 @@ Deck<CardType>::Deck(){
 
 template <class CardType>
 Deck<CardType>::~Deck(){
- //
+    while (this->cards_ != 0){
+        this->cards_.pop_back();
+    }
 }
 
 template <class CardType>
@@ -30,7 +32,7 @@ template <class CardType>
 CardType&& Deck<CardType>::Draw(){
 
     if (!IsEmpty()){
-        CardType&& cur = cards_.back();
+        CardType&& cur = std::move(cards_.back());
         cards_.pop_back();
 
         return cur;
@@ -38,32 +40,16 @@ CardType&& Deck<CardType>::Draw(){
     }
 
     return;
-
-
-
-    // access card at top of deck
-
-    // if actioncard, execute instruction
-    // Card current_card = cards_.back();
-    // if (cards_.back().getType() == "Action"){
-    //     cards_.back().Play();
-    // }
-    // else if (cards_.back().getType() == "Points"){
-    //     // add points card to Hand
-    // }
-
-    // cards_.pop_back();
-
-    // // return current_card;
-
-    // // if pointcard, add card to hand
-
-    // return;
 }
 
 template <class CardType>
 void Deck<CardType>::Shuffle(){
     return;
+}
+
+template <class CardType>
+int Deck<CardType>::getSize() const{
+    return this->cards_.size();
 }
 
 template <class CardType>
