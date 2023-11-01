@@ -43,6 +43,11 @@ CardType&& Deck<CardType>::Draw(){
 }
 
 template <class CardType>
+bool Deck<CardType>::IsEmpty() const{
+    return (cards_.size() == 0);
+}
+
+template <class CardType>
 void Deck<CardType>::Shuffle(){
     return;
 }
@@ -53,6 +58,6 @@ int Deck<CardType>::getSize() const{
 }
 
 template <class CardType>
-bool Deck<CardType>::IsEmpty() const{
-    return (cards_.size() == 0);
+std::vector<CardType> Deck<CardType>::getDeck() const{
+    return cards_;
 }
