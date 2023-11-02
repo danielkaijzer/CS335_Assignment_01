@@ -24,7 +24,9 @@ class ActionCard : public Card
 
         /**
          * @return true if the card is playable, false otherwise
-         * For a card to be playable, it has to be drawn and the instruction has to be valid
+         * For a card to be playable, 
+         * it has to be drawn and the instruction has to be valid
+         * 
          * Valid instructions:
          * DRAW x CARD(S) : assume x is a positive integer
          * PLAY x CARD(S) : assume x is a positive integer

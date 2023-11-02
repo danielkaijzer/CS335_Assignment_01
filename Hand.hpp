@@ -10,6 +10,7 @@ Hand.cpp Defines the Hand class.
 #define HAND_HPP
 
 #include <deque>
+#include <stack>
 #include "PointCard.hpp"
 
 class Hand {

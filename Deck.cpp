@@ -19,7 +19,10 @@ Deck<CardType>::Deck(){
 template <class CardType>
 Deck<CardType>::~Deck(){
     while (this->cards_ != 0){
+        // Card cur = cards_.back();
+
         this->cards_.pop_back();
+        // delete cur;
     }
 }
 
@@ -34,9 +37,7 @@ CardType&& Deck<CardType>::Draw(){
     if (!IsEmpty()){
         CardType&& cur = std::move(cards_.back());
         cards_.pop_back();
-
         return cur;
-
     }
 
     return;
@@ -49,7 +50,9 @@ bool Deck<CardType>::IsEmpty() const{
 
 template <class CardType>
 void Deck<CardType>::Shuffle(){
-    return;
+    std::mt19937 rand;
+    rand.seed(2028358904);
+    std::shuffle(cards_[0], cards[cards_.size()-1], rand);
 }
 
 template <class CardType>

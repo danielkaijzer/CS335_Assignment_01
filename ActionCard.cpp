@@ -17,10 +17,30 @@ ActionCard::ActionCard(){
 
 
 bool ActionCard::isPlayable(){
+    if (getDrawn()){
+
+        if(
+            getInstruction().substr(0,4) == "DRAW"
+            || getInstruction().substr(0,4) == "PLAY"
+            || getInstruction().substr(0,7) == "REVERSE")
+        {
+            return true;
+        }
+    }
+
     return false;
 
 }
 
 void ActionCard::Print() const{
-    std::cout << getInstruction();
+    std::cout << "Type: " <<getType() << std::endl;
+    std::cout << "Instruction: "<< getInstruction() << std::endl;
+    
+    std::cout << "Card: ";
+    if (getImageData() != 0){
+        std::cout << getImageData() << std::endl;
+    }
+    else{
+        std::cout << "No image data" << std::endl;
+    }
 }

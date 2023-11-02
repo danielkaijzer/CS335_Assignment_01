@@ -59,9 +59,12 @@ void Player::setScore(const int& score){
  * PLAYING ACTION CARD: [instruction]
  */
 void Player::play(ActionCard&& card){
-    std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
 
-    // card.getDrawn();
+    card.setDrawn(true);
+
+    if (card.isPlayable()){
+        std::cout << "PLAYING ACTION CARD: " << card.getInstruction() << std::endl;
+    }
 
 }
 
