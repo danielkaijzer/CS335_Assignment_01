@@ -12,16 +12,13 @@
 #include "Hand.hpp"
 
 Hand::Hand(){
-    cards_;
 }
 
 Hand::~Hand(){
     while(!this->isEmpty()){
         cards_.pop_back();
     }
-
 }
-
 
 Hand::Hand(const Hand& other){
     for (auto card : other.cards_){
@@ -30,7 +27,7 @@ Hand::Hand(const Hand& other){
 }
 
 Hand& Hand::operator=(const Hand& other){
-    Hand(other);
+    cards_ = other.cards_;
     return *this;
 }
 
@@ -39,7 +36,9 @@ Hand::Hand(Hand&& other){
 }
 
 Hand& Hand::operator=(Hand&& other){
-    std::swap(this->cards_,other.cards_);
+    if (this != &other){
+        cards_ = std::move(other.cards_);
+    }
     return *this;
 }
 
@@ -48,6 +47,7 @@ const std::deque<PointCard>& Hand::getCards() const{
 }
 
 void Hand::addCard(PointCard&& card){
+    card.setDrawn(true);
     cards_.push_back(card);
 }
 
@@ -76,13 +76,27 @@ void Hand::Reverse(){
  * @return the points earned from playing the card
  */
 int Hand::PlayCard(){
-    if (!isEmpty()){
-        PointCard cur = std::move(cards_.front());
-        cards_.pop_front();
-        if (cur.isPlayable()){
-            return std::stoi(cur.getInstruction());
-        }
+
+    if(isEmpty()){
+        throw std::runtime_error("Empty");
     }
-    throw("Hand empty or card not playable.");
-    return 0;
+
+    PointCard cur = cards_.front();
+
+    if(!cur.isPlayable()){
+        throw std::runtime_error("Unplayable");
+    }
+
+    cards_.pop_front();
+    return std::stoi(cur.getInstruction());
+
+    // if (!isEmpty()){
+    //     PointCard cur = std::move(cards_.front());
+    //     cards_.pop_front();
+    //     if (cur.isPlayable()){
+    //         return std::stoi(cur.getInstruction());
+    //     }
+    // }
+    // throw("Hand empty or card not playable.");
+    // return 0;
 }

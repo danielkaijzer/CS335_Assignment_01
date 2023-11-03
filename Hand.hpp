@@ -79,6 +79,4 @@ class Hand {
     private:
         std::deque<PointCard> cards_;
 };
-
-#include "Deck.cpp"
 #endif

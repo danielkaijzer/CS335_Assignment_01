@@ -12,30 +12,21 @@
 #include "Card.hpp"
 #include "PointCard.hpp"
 #include "ActionCard.hpp"
+#include "Deck.hpp"
 
-// use to run: clang++ -std=c++17 main.cpp Card.cpp PointCard.cpp ActionCard.cpp  -L. -o main
+// use to run: clang++ -std=c++17 main.cpp Card.cpp PointCard.cpp ActionCard.cpp Deck.cpp -L. -o main
 
 int main() {
   // Create a new PointCard object
   PointCard pc1;
 
+  Deck<PointCard> d1;
+
   pc1.setInstruction("5 points");
-
-  // int*image_data = new int[80];
-  // for (int i=0; i < 5; ++i){
-  //   image_data[i] = 0;
-  // }
-  // pc1.setImageData(image_data);
-
   pc1.Print();
 
   PointCard pc2 = pc1;
   pc2.Print();
-
-  // std::cout <<pc2.isPlayable() << std::endl;
-
-  // pc2.setDrawn(true);
-  // std::cout <<pc2.isPlayable() << std::endl;
 
   ActionCard ac1;
   std::cout<< ac1.isPlayable() << std::endl;
@@ -47,9 +38,9 @@ int main() {
 
   ac2.Print();
 
-  // Print the card type
-//   std::cout << "Card type: " << pointCard.getType() << std::endl;
-//   std::cout << "Card type: " << pointCard.getInstruction() << std::endl;
+
+
+
 
   return 0;
 }

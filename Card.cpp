@@ -13,7 +13,7 @@
 
 // Destructor
 Card::~Card(){
-    delete this->bitmap_;
+    delete[] this->bitmap_;
     bitmap_ = nullptr;
 }
 
@@ -21,7 +21,6 @@ Card::~Card(){
 Card::Card(const Card & rhs){
     cardType_ = rhs.cardType_;
     instruction_ = rhs.instruction_;
-    // bitmap_ = new int{*rhs.bitmap_};
     bitmap_ = rhs.bitmap_;
     drawn_ = rhs.drawn_;
 }
@@ -31,14 +30,13 @@ Card & Card::operator=(const Card& rhs){
     if (this != &rhs){
         cardType_ = rhs.cardType_;
         instruction_ = rhs.instruction_;
-        // bitmap_ = new int{*rhs.bitmap_};
         bitmap_ = rhs.bitmap_;
         drawn_ = rhs.drawn_;
     }
     return *this;
 }
 
-// // Move Constructor
+// Move Constructor
 Card::Card(Card && rhs){
     cardType_ = std::move(rhs.cardType_);
     instruction_ = std::move(rhs.instruction_);
@@ -49,10 +47,14 @@ Card::Card(Card && rhs){
 // Move Assignment Operator
 Card & Card::operator=(Card && rhs){
     // Use std::swap for all data members
-    std::swap(cardType_,rhs.cardType_);
-    std::swap(instruction_, rhs.instruction_);
-    std::swap(bitmap_, rhs.bitmap_);
-    std::swap(drawn_,rhs.drawn_);
+    // std::swap(cardType_,rhs.cardType_);
+    // std::swap(instruction_, rhs.instruction_);
+    // std::swap(bitmap_, rhs.bitmap_);
+    // std::swap(drawn_,rhs.drawn_);
+    cardType_ = std::move(rhs.cardType_);
+    instruction_ = std::move(rhs.instruction_);
+    bitmap_ = std::move(rhs.bitmap_);
+    drawn_ = std::move(rhs.drawn_);
     return *this;
 }
 

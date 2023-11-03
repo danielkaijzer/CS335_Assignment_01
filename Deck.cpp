@@ -13,17 +13,17 @@
 
 template <class CardType>
 Deck<CardType>::Deck(){
-
+    cards_.clear();
 }
 
 template <class CardType>
 Deck<CardType>::~Deck(){
-    while (this->cards_.size() != 0){
-        // Card cur = cards_.back();
+    // while (this->cards_.size() != 0){
+    //     Card cur = cards_.back();
 
-        this->cards_.pop_back();
-        // delete cur;
-    }
+    //     this->cards_.pop_back();
+    //     delete cur;
+    // }
 }
 
 template <class CardType>
@@ -35,12 +35,11 @@ template <class CardType>
 CardType&& Deck<CardType>::Draw(){
 
     if (!IsEmpty()){
+        cards_.back().setDrawn(true);
         CardType&& cur = std::move(cards_.back());
         cards_.pop_back();
-        return cur;
+        return std::move(cur);
     }
-
-    return;
 }
 
 template <class CardType>
@@ -52,7 +51,7 @@ template <class CardType>
 void Deck<CardType>::Shuffle(){
     std::mt19937 rand;
     rand.seed(2028358904);
-    std::shuffle(cards_[0], cards_[cards_.size()-1], rand);
+    std::shuffle(cards_.begin(), cards_.end(), rand);
 }
 
 template <class CardType>

@@ -31,7 +31,7 @@ void PointCard::Print() const{
 
     std::cout << "Type: " << this->getType() << std::endl;
     std::cout << "Points: "<< this->getInstruction() << std::endl;
-    std::cout << "Card: ";
+    std::cout << "Card: " << std::endl;;
     if (getImageData() != nullptr){
         // for (int i = 0; i < 80; ++i){
             std::cout << *getImageData();
