@@ -12,7 +12,7 @@
 #include "ActionCard.hpp"
 
 ActionCard::ActionCard(){
-    setType(ACTION_CARD);
+    this->setType(ACTION_CARD);
 }
 
 
@@ -34,14 +34,17 @@ bool ActionCard::isPlayable(){
 }
 
 void ActionCard::Print() const{
-    std::cout << "Type: " <<getType() << std::endl;
+    std::cout << "Type: " << getType() << std::endl;
     std::cout << "Instruction: "<< getInstruction() << std::endl;
     
     std::cout << "Card: ";
-    if (getImageData() != 0){
-        std::cout << getImageData() << std::endl;
+    if (getImageData() != nullptr){
+        for (int i = 0; i < 80; ++i){
+            std::cout << *getImageData();
+        }
     }
     else{
         std::cout << "No image data" << std::endl;
     }
+    std::cout << "\n";
 }

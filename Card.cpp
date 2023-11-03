@@ -13,7 +13,7 @@
 
 // Destructor
 Card::~Card(){
-    delete bitmap_;
+    delete this->bitmap_;
     bitmap_ = nullptr;
 }
 
@@ -21,8 +21,8 @@ Card::~Card(){
 Card::Card(const Card & rhs){
     cardType_ = rhs.cardType_;
     instruction_ = rhs.instruction_;
-    setImageData(rhs.bitmap_);
     bitmap_ = new int{*rhs.bitmap_};
+    drawn_ = rhs.drawn_;
 }
 
 // // Copy Assignment Operator
@@ -30,8 +30,8 @@ Card & Card::operator=(const Card& rhs){
     if (this != &rhs){
         cardType_ = rhs.cardType_;
         instruction_ = rhs.instruction_;
-        setImageData(rhs.bitmap_);
-        bitmap_ = rhs.bitmap_;
+        bitmap_ = new int{*rhs.bitmap_};
+        drawn_ = rhs.drawn_;
     }
     return *this;
 }
@@ -41,6 +41,7 @@ Card::Card(Card && rhs){
     cardType_ = std::move(rhs.cardType_);
     instruction_ = std::move(rhs.instruction_);
     bitmap_ = std::move(rhs.bitmap_);
+    drawn_ = std::move(rhs.drawn_);
 }
 
 // Move Assignment Operator
@@ -49,6 +50,7 @@ Card & Card::operator=(Card && rhs){
     std::swap(cardType_,rhs.cardType_);
     std::swap(instruction_, rhs.instruction_);
     std::swap(bitmap_, rhs.bitmap_);
+    std::swap(drawn_,rhs.drawn_);
     return *this;
 }
 
@@ -61,12 +63,16 @@ Card::Card(){
 std::string Card::getType() const{
     if (cardType_ == POINT_CARD)
         return "POINT_CARD";
-    else
+    else if (cardType_ == ACTION_CARD){
         return "ACTION_CARD";
+    }
+    else{
+        return "";
+    }
 }
 
 void Card::setType(const CardType& type){
-    instruction_ = type;
+    cardType_ = type;
 }
 
 void Card::setInstruction(const std::string& instruction){
@@ -75,13 +81,8 @@ void Card::setInstruction(const std::string& instruction){
 }
 
 void Card::setImageData(int* data){
-    if (data){
-        for (int i = 0; i < 80; ++i){
-            bitmap_++;
-            bitmap_ = data;
-            data++;
-        }
-    }
+
+    bitmap_ = data;
 }
 
 const std::string& Card::getInstruction() const{
