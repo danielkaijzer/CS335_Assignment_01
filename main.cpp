@@ -21,25 +21,31 @@ int main() {
 
   pc1.setInstruction("5 points");
 
-  int*image_data = new int[80];
-  for (int i=0; i < 5; ++i){
-    image_data[i] = 0;
-  }
-  pc1.setImageData(image_data);
+  // int*image_data = new int[80];
+  // for (int i=0; i < 5; ++i){
+  //   image_data[i] = 0;
+  // }
+  // pc1.setImageData(image_data);
 
   pc1.Print();
 
   PointCard pc2 = pc1;
   pc2.Print();
 
-  // ActionCard ac1;
-  // std::cout<< ac1.isPlayable() << std::endl;
-  // ac1.setInstruction("SWAP");
-  // ac1.setDrawn(true);
+  // std::cout <<pc2.isPlayable() << std::endl;
 
-  // std::cout<< ac1.isPlayable() << std::endl;
+  // pc2.setDrawn(true);
+  // std::cout <<pc2.isPlayable() << std::endl;
 
-  // ac1.Print();
+  ActionCard ac1;
+  std::cout<< ac1.isPlayable() << std::endl;
+  ac1.setInstruction("SWAP 3 CARD(S)");
+  ac1.setDrawn(true);
+  std::cout<< ac1.isPlayable() << std::endl;
+
+  ActionCard ac2 = ac1;
+
+  ac2.Print();
 
   // Print the card type
 //   std::cout << "Card type: " << pointCard.getType() << std::endl;

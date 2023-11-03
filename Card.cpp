@@ -21,7 +21,8 @@ Card::~Card(){
 Card::Card(const Card & rhs){
     cardType_ = rhs.cardType_;
     instruction_ = rhs.instruction_;
-    bitmap_ = new int{*rhs.bitmap_};
+    // bitmap_ = new int{*rhs.bitmap_};
+    bitmap_ = rhs.bitmap_;
     drawn_ = rhs.drawn_;
 }
 
@@ -30,7 +31,8 @@ Card & Card::operator=(const Card& rhs){
     if (this != &rhs){
         cardType_ = rhs.cardType_;
         instruction_ = rhs.instruction_;
-        bitmap_ = new int{*rhs.bitmap_};
+        // bitmap_ = new int{*rhs.bitmap_};
+        bitmap_ = rhs.bitmap_;
         drawn_ = rhs.drawn_;
     }
     return *this;

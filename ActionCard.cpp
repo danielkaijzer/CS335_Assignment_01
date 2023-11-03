@@ -27,6 +27,13 @@ bool ActionCard::isPlayable(){
         {
             return true;
         }
+        // std::regex pattern(R"(^DRAW|PLAY) (\d+) CARD(S)?|REVERSE HAND|SWAP HAND WITH OPPONENT$)");
+        // std::smatch match;
+        // if (regex_match(getInstruction(), match, pattern)) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
     }
 
     return false;
@@ -44,7 +51,7 @@ void ActionCard::Print() const{
         }
     }
     else{
-        std::cout << "No image data" << std::endl;
+        std::cout << "No image data";
     }
     std::cout << "\n";
 }
