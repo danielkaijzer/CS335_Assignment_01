@@ -11,46 +11,46 @@
 
 #include "Card.hpp"
 
-// // Destructor
-// // Card::~Card(){
-// //     delete bitmap_;
-// //     bitmap_ = nullptr;
-// // }
+// Destructor
+Card::~Card(){
+    delete bitmap_;
+    bitmap_ = nullptr;
+}
 
-// // Copy Constructor
-// Card::Card(const Card & rhs){
-//     cardType_ = rhs.cardType_;
-//     instruction_ = rhs.instruction_;
-//     setImageData(rhs.bitmap_);
-//     // bitmap_ = new int{*rhs.bitmap_};
-// }
+// Copy Constructor
+Card::Card(const Card & rhs){
+    cardType_ = rhs.cardType_;
+    instruction_ = rhs.instruction_;
+    setImageData(rhs.bitmap_);
+    bitmap_ = new int{*rhs.bitmap_};
+}
 
-// // // Copy Assignment Operator
-// Card & Card::operator=(const Card& rhs){
-//     if (this != &rhs){
-//         cardType_ = rhs.cardType_;
-//         instruction_ = rhs.instruction_;
-//         setImageData(rhs.bitmap_);
-//         // bitmap_ = rhs.bitmap_;
-//     }
-//     return *this;
-// }
+// // Copy Assignment Operator
+Card & Card::operator=(const Card& rhs){
+    if (this != &rhs){
+        cardType_ = rhs.cardType_;
+        instruction_ = rhs.instruction_;
+        setImageData(rhs.bitmap_);
+        bitmap_ = rhs.bitmap_;
+    }
+    return *this;
+}
 
-// // // Move Constructor
-// Card::Card(Card && rhs){
-//     cardType_ = std::move(rhs.cardType_);
-//     instruction_ = std::move(rhs.instruction_);
-//     bitmap_ = std::move(rhs.bitmap_);
-// }
+// // Move Constructor
+Card::Card(Card && rhs){
+    cardType_ = std::move(rhs.cardType_);
+    instruction_ = std::move(rhs.instruction_);
+    bitmap_ = std::move(rhs.bitmap_);
+}
 
-// // Move Assignment Operator
-// Card & Card::operator=(Card && rhs){
-//     // Use std::swap for all data members
-//     std::swap(cardType_,rhs.cardType_);
-//     std::swap(instruction_, rhs.instruction_);
-//     std::swap(bitmap_, rhs.bitmap_);
-//     return *this;
-// }
+// Move Assignment Operator
+Card & Card::operator=(Card && rhs){
+    // Use std::swap for all data members
+    std::swap(cardType_,rhs.cardType_);
+    std::swap(instruction_, rhs.instruction_);
+    std::swap(bitmap_, rhs.bitmap_);
+    return *this;
+}
 
 Card::Card(){
     instruction_ = "";
@@ -60,9 +60,9 @@ Card::Card(){
 
 std::string Card::getType() const{
     if (cardType_ == POINT_CARD)
-        return "POINT CARD";
+        return "POINT_CARD";
     else
-        return "ACTION CARD";
+        return "ACTION_CARD";
 }
 
 void Card::setType(const CardType& type){

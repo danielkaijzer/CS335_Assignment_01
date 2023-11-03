@@ -26,7 +26,7 @@ class Card
          * Destructor
          * @post: Destroy the Card object
         */
-        // ~Card();
+        ~Card();
         /**
          * Copy Constructor
          * @post: Construct a new Card object
