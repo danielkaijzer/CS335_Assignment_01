@@ -11,8 +11,10 @@
 
 #include "PointCard.hpp"
 
+// PointCard::PointCard() : Card() {}
+
 PointCard::PointCard(){
-    setType(POINT_CARD);
+    this->setType(POINT_CARD);
 }
 
 bool PointCard::isPlayable(){

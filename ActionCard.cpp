@@ -22,7 +22,8 @@ bool ActionCard::isPlayable(){
         if(
             getInstruction().substr(0,4) == "DRAW"
             || getInstruction().substr(0,4) == "PLAY"
-            || getInstruction().substr(0,7) == "REVERSE")
+            || getInstruction().substr(0,7) == "REVERSE"
+            || getInstruction().substr(0,4) == "SWAP")
         {
             return true;
         }

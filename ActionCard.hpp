@@ -47,5 +47,4 @@ class ActionCard : public Card
         virtual void Print() const override;
 };
 
-// #include "ActionCard.cpp"
 #endif

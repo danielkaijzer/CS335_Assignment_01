@@ -26,7 +26,7 @@ class Card
          * Destructor
          * @post: Destroy the Card object
         */
-        ~Card();
+        // ~Card();
         /**
          * Copy Constructor
          * @post: Construct a new Card object
@@ -50,20 +50,21 @@ class Card
          * @return this card object
         */
         Card& operator=(Card&& rhs);
+
         /**
          * Default Constructor
          * @post: Construct a new Card object 
          */
         Card();
 
-        /**
-         * @return the string representation of the card type
-         */
+        // /**
+        //  * @return the string representation of the card type
+        //  */
         std::string getType() const;
-        /**
-         * @post: set the card type
-         * @param const reference to a CardType object
-         */
+        // /**
+        //  * @post: set the card type
+        //  * @param const reference to a CardType object
+        //  */
         void setType(const CardType& type);
 
         /**
@@ -108,4 +109,5 @@ class Card
         bool drawn_;
 };
 
+// #include "Card.cpp"
 #endif

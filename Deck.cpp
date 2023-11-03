@@ -18,7 +18,7 @@ Deck<CardType>::Deck(){
 
 template <class CardType>
 Deck<CardType>::~Deck(){
-    while (this->cards_ != 0){
+    while (this->cards_.size() != 0){
         // Card cur = cards_.back();
 
         this->cards_.pop_back();
@@ -52,7 +52,7 @@ template <class CardType>
 void Deck<CardType>::Shuffle(){
     std::mt19937 rand;
     rand.seed(2028358904);
-    std::shuffle(cards_[0], cards[cards_.size()-1], rand);
+    std::shuffle(cards_[0], cards_[cards_.size()-1], rand);
 }
 
 template <class CardType>

@@ -9,18 +9,29 @@
  * 
  */
 
-#include "CardGame.hpp"
+#include "Card.hpp"
+#include "PointCard.hpp"
+#include "ActionCard.hpp"
 
-using namespace std;
+// use to run: clang++ -std=c++17 main.cpp Card.cpp PointCard.cpp ActionCard.cpp  -L. -o main
 
-int main(){
-    std::ifstream infile("input_0.txt");    
+int main() {
+  // Create a new PointCard object
+  PointCard pc1;
+  pc1.Print();
 
-    CardGame c1 = CardGame(infile);
+  ActionCard ac1;
+  std::cout<< ac1.isPlayable() << std::endl;
+  ac1.setInstruction("SWAP");
+  ac1.setDrawn(true);
 
-    // ActionCard c1;
-    // c1.Play();
+  std::cout<< ac1.isPlayable() << std::endl;
 
-    // Deck<int> d1;
-    // std::cout << d1.isEmpty() << std::endl;
+  ac1.Print();
+
+  // Print the card type
+//   std::cout << "Card type: " << pointCard.getType() << std::endl;
+//   std::cout << "Card type: " << pointCard.getInstruction() << std::endl;
+
+  return 0;
 }
