@@ -1,3 +1,4 @@
+
 /**
  * @file Deck.cpp
  * @author Daniel Kaijzer
@@ -36,7 +37,8 @@ CardType&& Deck<CardType>::Draw(){
 
     if (!IsEmpty()){
         cards_.back().setDrawn(true);
-        CardType&& cur = std::move(cards_.back());
+        // CardType&& cur = std::move(cards_.back());
+        CardType cur = cards_.back();
         cards_.pop_back();
         return std::move(cur);
     }

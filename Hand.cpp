@@ -10,6 +10,7 @@
  */
 
 #include "Hand.hpp"
+#include <algorithm>
 
 Hand::Hand(){
 }
@@ -27,7 +28,10 @@ Hand::Hand(const Hand& other){
 }
 
 Hand& Hand::operator=(const Hand& other){
-    cards_ = other.cards_;
+
+    for (auto card : other.cards_){
+        this->cards_.push_back(card);
+    }
     return *this;
 }
 
@@ -48,7 +52,7 @@ const std::deque<PointCard>& Hand::getCards() const{
 
 void Hand::addCard(PointCard&& card){
     card.setDrawn(true);
-    cards_.push_back(card);
+    cards_.push_back(std::move(card));
 }
 
 bool Hand::isEmpty() const{
@@ -56,17 +60,20 @@ bool Hand::isEmpty() const{
 }
 
 void Hand::Reverse(){
-    std::stack<PointCard> tmp;
 
-    while(!cards_.empty()){
-        tmp.push(cards_.back());
-        cards_.pop_back();
-    }
+    std::reverse(cards_.begin(), cards_.end());
 
-    while(!tmp.empty()){
-        cards_.push_back(tmp.top());
-        tmp.pop();
-    }
+    // std::stack<PointCard> tmp;
+
+    // while(!cards_.empty()){
+    //     tmp.push(cards_.back());
+    //     cards_.pop_back();
+    // }
+
+    // while(!tmp.empty()){
+    //     cards_.push_back(tmp.top());
+    //     tmp.pop();
+    // }
 }
 
 /**
@@ -77,26 +84,12 @@ void Hand::Reverse(){
  */
 int Hand::PlayCard(){
 
-    if(isEmpty()){
-        throw std::runtime_error("Empty");
+    if (!isEmpty()){
+        PointCard cur = std::move(cards_.front());
+        cards_.pop_front();
+        if (cur.isPlayable()){
+            return std::stoi(cur.getInstruction());
+        }
     }
-
-    PointCard cur = cards_.front();
-
-    if(!cur.isPlayable()){
-        throw std::runtime_error("Unplayable");
-    }
-
-    cards_.pop_front();
-    return std::stoi(cur.getInstruction());
-
-    // if (!isEmpty()){
-    //     PointCard cur = std::move(cards_.front());
-    //     cards_.pop_front();
-    //     if (cur.isPlayable()){
-    //         return std::stoi(cur.getInstruction());
-    //     }
-    // }
-    // throw("Hand empty or card not playable.");
-    // return 0;
+    throw("Hand empty or card not playable.");
 }
