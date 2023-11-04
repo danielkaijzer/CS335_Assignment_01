@@ -61,19 +61,19 @@ bool Hand::isEmpty() const{
 
 void Hand::Reverse(){
 
-    std::reverse(cards_.begin(), cards_.end());
+    // reversing deque using a stack
 
-    // std::stack<PointCard> tmp;
+    std::stack<PointCard> tmp;
 
-    // while(!cards_.empty()){
-    //     tmp.push(cards_.back());
-    //     cards_.pop_back();
-    // }
+    while(!cards_.empty()){
+        tmp.push(cards_.back());
+        cards_.pop_back();
+    }
 
-    // while(!tmp.empty()){
-    //     cards_.push_back(tmp.top());
-    //     tmp.pop();
-    // }
+    while(!tmp.empty()){
+        cards_.push_front(tmp.top());
+        tmp.pop();
+    }
 }
 
 /**

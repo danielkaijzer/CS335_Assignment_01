@@ -1,39 +1,29 @@
 #include "Player.hpp"
 
-// Player::Player(){
-//     opponent_ = nullptr;
-//     score_ = 0;
-
-//     actiondeck_ = new Deck<ActionCard>();
-//     pointdeck_ = new Deck<PointCard>();
-// }
-
-Player::Player(): score_(0), opponent_(nullptr){
+Player::Player(){
+    opponent_ = nullptr;
+    score_ = 0;
 
     actiondeck_ = new Deck<ActionCard>();
     pointdeck_ = new Deck<PointCard>();
 }
-
 /**
  * @post: Destroy the Player object
  */
 Player::~Player(){
+    hand_.~Hand();
+    score_ = 0;
 
-    delete actiondeck_;
-    delete pointdeck_;
-    // hand_.~Hand();
-    // score_ = 0;
+    delete opponent_;
+    opponent_ = nullptr;
 
-    // delete opponent_;
-    // opponent_ = nullptr;
+    actiondeck_->~Deck();
+    delete[] actiondeck_;
+    actiondeck_ = nullptr;
 
-    // actiondeck_->~Deck();
-    // delete[] actiondeck_;
-    // actiondeck_ = nullptr;
-
-    // pointdeck_->~Deck();
-    // delete[] pointdeck_;
-    // pointdeck_ = nullptr;
+    pointdeck_->~Deck();
+    delete[] pointdeck_;
+    pointdeck_ = nullptr;
 }
 
 /**
@@ -72,53 +62,12 @@ void Player::setScore(const int& score){
  */
 void Player::play(ActionCard&& card){
 
-    // v1
-    // if (card.isPlayable() == false){
-    //     return;
-    // }
-
-    // std::string instr = card.getInstruction();
-    // std::regex drawR("DRAW (\\d+) CAARD(\\(S\\))?");
-    // std::regex playR("PLAY (\\d+) CARD(\\(S\\))?");
-    // std::smatch m;
-
-    // std::cout << "PLAYING ACTION CARD: " << instr;
-
-    // // IF PLAY INSTRUCTION, PLAY POINTCARD(S)
-    // if(std::regex_match(instr, m, playR)){
-    //     int num = std::stoi(m[1].str());
-    //     for (int i=0; i<num; i++){
-    //         playPointCard();
-    //     }
-    // }
-
-    // // ELSE IF DRAW INSTRUCTION, DRAW POINTCARD(S)
-    // else if(std::regex_match(instr, m, drawR)){
-    //     int num = std::stoi(m[1].str());
-    //     for (int i = 0; i < num; i++){
-    //         hand_.addCard(pointdeck_->Draw());
-    //     }
-    // }
-
-    // else if(instr == "SWAP HAND WITH OPPONENT"){
-    //     Hand playerHand = getHand();
-    //     setHand(opponent_->getHand());
-    //     opponent_->setHand(playerHand);
-    // }
-
-    // else if(instr == "REVERSE HAND"){
-    //     hand_.Reverse();
-    // }
-
-
-
-    // v2
+    // first check if card is playable
     if (card.isPlayable()){
-        card.setDrawn(true);
 
         std::string instr = card.getInstruction();
+        std::regex playR("PLAY (\\d+) CARD(\\(S\\))?");
         std::regex drawR("DRAW (\\d+) CAARD(\\(S\\))?");
-        std::regex playR("DRAW (\\d+) CARD(\\(S\\))?");
         std::smatch m;
 
         std::cout << "PLAYING ACTION CARD: " << instr << std::endl;
@@ -134,7 +83,7 @@ void Player::play(ActionCard&& card){
         else if(std::regex_match(instr, m, drawR)){
             int num = std::stoi(m[1].str());
             for (int i = 0; i < num; ++i){
-                hand_.addCard(pointdeck_->Draw());
+                drawPointCard();
             }
         }
         else if(instr == "SWAP HAND WITH OPPONENT"){

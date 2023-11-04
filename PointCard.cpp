@@ -17,9 +17,11 @@ PointCard::PointCard(){
 
 bool PointCard::isPlayable(){
 
+    // convert instruction to int value (for points)
     std::string s = getInstruction();
     int si = std::stoi(s);
 
+    // if getDrawn() is true and points are non-negative
     if (getDrawn() && si >= 0){
         return true;
     }
@@ -32,10 +34,11 @@ void PointCard::Print() const{
     std::cout << "Type: " << this->getType() << std::endl;
     std::cout << "Points: "<< this->getInstruction() << std::endl;
     std::cout << "Card: " << std::endl;;
+
     if (getImageData() != nullptr){
-        // for (int i = 0; i < 80; ++i){
+        for (int i = 0; i < 80; ++i){
             std::cout << *getImageData();
-        // }
+        }
     }
     else{
         std::cout << "No image data";

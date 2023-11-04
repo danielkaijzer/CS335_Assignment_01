@@ -14,17 +14,16 @@
 
 template <class CardType>
 Deck<CardType>::Deck(){
-    cards_.clear();
+    cards_.clear(); // start with clean deck
 }
 
 template <class CardType>
 Deck<CardType>::~Deck(){
-    // while (this->cards_.size() != 0){
-    //     Card cur = cards_.back();
-
-    //     this->cards_.pop_back();
-    //     delete cur;
-    // }
+    while (this->cards_.size() != 0){
+        CardType cur = cards_.back();
+        this->cards_.pop_back();
+        // destructor for card will be called implicitly after popping
+    }
 }
 
 template <class CardType>
@@ -37,8 +36,8 @@ CardType&& Deck<CardType>::Draw(){
 
     if (!IsEmpty()){
         cards_.back().setDrawn(true);
-        // CardType&& cur = std::move(cards_.back());
-        CardType cur = cards_.back();
+        // CardType&& cur = std::move(cards_.back()); // works for Deck
+        CardType cur = std::move(cards_.back()); // works for Player
         cards_.pop_back();
         return std::move(cur);
     }
