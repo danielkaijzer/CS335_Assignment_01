@@ -22,7 +22,7 @@ bool PointCard::isPlayable(){
     int si = std::stoi(s);
 
     // if getDrawn() is true and points are non-negative
-    if (getDrawn() && si >= 0){
+    if (getDrawn() && si >= 1 && si <= 99){
         return true;
     }
 

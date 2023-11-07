@@ -47,11 +47,6 @@ Card::Card(Card && rhs){
 // Move Assignment Operator
 Card & Card::operator=(Card && rhs){
 
-    // std::swap(cardType_,rhs.cardType_);
-    // std::swap(instruction_,rhs.instruction_);
-    // std::swap(bitmap_, rhs.bitmap_);
-    // std::swap(drawn_,rhs.drawn_);
-
     cardType_ = std::move(rhs.cardType_);
     instruction_ = std::move(rhs.instruction_);
     bitmap_ = std::move(rhs.bitmap_);
