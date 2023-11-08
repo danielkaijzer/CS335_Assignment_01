@@ -13,7 +13,9 @@
 
 // Destructor
 Card::~Card(){
-    delete[] this->bitmap_;
+    if (bitmap_ != nullptr){
+        delete[] bitmap_;
+    }
     bitmap_ = nullptr;
 }
 
@@ -21,18 +23,16 @@ Card::~Card(){
 Card::Card(const Card & rhs){
     cardType_ = rhs.cardType_;
     instruction_ = rhs.instruction_;
-    bitmap_ = rhs.bitmap_;
     drawn_ = rhs.drawn_;
+    bitmap_ = rhs.bitmap_;
 }
 
 // Copy Assignment Operator
 Card & Card::operator=(const Card& rhs){
-    if (this != &rhs){
-        cardType_ = rhs.cardType_;
-        instruction_ = rhs.instruction_;
-        bitmap_ = rhs.bitmap_;
-        drawn_ = rhs.drawn_;
-    }
+    cardType_ = rhs.cardType_;
+    instruction_ = rhs.instruction_;
+    drawn_ = rhs.drawn_;
+    bitmap_ = rhs.bitmap_;
     return *this;
 }
 
@@ -40,8 +40,14 @@ Card & Card::operator=(const Card& rhs){
 Card::Card(Card && rhs){
     cardType_ = std::move(rhs.cardType_);
     instruction_ = std::move(rhs.instruction_);
-    bitmap_ = std::move(rhs.bitmap_);
     drawn_ = std::move(rhs.drawn_);
+    bitmap_ = std::move(rhs.bitmap_);
+
+    // reset moved-from object members
+    rhs.instruction_ ="";
+    rhs.drawn_ = false;
+    rhs.bitmap_ = nullptr;
+
 }
 
 // Move Assignment Operator
@@ -49,8 +55,19 @@ Card & Card::operator=(Card && rhs){
 
     cardType_ = std::move(rhs.cardType_);
     instruction_ = std::move(rhs.instruction_);
-    bitmap_ = std::move(rhs.bitmap_);
     drawn_ = std::move(rhs.drawn_);
+    
+    // Delete the current bitmap if it's not owned by this object
+    if (bitmap_ != rhs.bitmap_) {
+        delete[] bitmap_;
+    }
+    bitmap_ = std::move(rhs.bitmap_);
+
+    // reset moved-from object members
+    rhs.instruction_ ="";
+    rhs.drawn_ = false;
+    rhs.bitmap_ = nullptr;
+
     return *this;
 }
 
@@ -58,16 +75,18 @@ Card::Card(){
     instruction_ = "";
     bitmap_ = nullptr;
     drawn_ = false;
+    
 }
 
+/**
+ * @return the string representation of the card type
+ */
 std::string Card::getType() const{
-    if (cardType_ == POINT_CARD)
+    if (cardType_ == POINT_CARD){
         return "POINT_CARD";
-    else if (cardType_ == ACTION_CARD){
-        return "ACTION_CARD";
     }
     else{
-        return "";
+        return "ACTION_CARD";
     }
 }
 

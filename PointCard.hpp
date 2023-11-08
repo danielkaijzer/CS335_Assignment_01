@@ -36,5 +36,4 @@ class PointCard : public Card
         void Print() const override;
 };
 
-// #include "PointCard.cpp"
 #endif

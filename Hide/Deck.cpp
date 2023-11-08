@@ -14,7 +14,6 @@
 
 template <class CardType>
 Deck<CardType>::Deck(){
-    cards_.clear(); // start with clean deck
 }
 
 template <class CardType>
@@ -39,11 +38,20 @@ CardType&& Deck<CardType>::Draw(){
         // WEIRD GLITCH BELOW WHERE AUTOGRADER GIVES ME CREDIT
         // FOR DECK OR PLAYER BUT NEVER BOTH:
 
-        // CardType&& cur = std::move(cards_.back()); // works for Deck
-        CardType cur = std::move(cards_.back()); // works for Player
-        
+        CardType&& cur = std::move(cards_.back()); // works for Deck
+
+        // CardType *cur = new CardType();
+        // cur = std::move(&cards_.back()); // works for Player
+        // CardType cur = cards_.back();
         cards_.pop_back();
-        return std::move(cur);
+
+        //works for player
+        // CardType cur = std::move(cards_.back()); // works for Player
+
+        // return std::move(cur);
+        // return std::move(*cur);
+
+        return(std::move(cur));
     }
 }
 

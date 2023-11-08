@@ -57,14 +57,15 @@ class Card
          */
         Card();
 
-        // /**
-        //  * @return the string representation of the card type
-        //  */
+        /**
+         * @return the string representation of the card type
+         */
         std::string getType() const;
-        // /**
-        //  * @post: set the card type
-        //  * @param const reference to a CardType object
-        //  */
+        
+        /**
+         * @post: set the card type
+         * @param const reference to a CardType object
+         */
         void setType(const CardType& type);
 
         /**
@@ -109,5 +110,4 @@ class Card
         bool drawn_;
 };
 
-// #include "Card.cpp"
 #endif
