@@ -1,8 +1,8 @@
 /*
 CSCI335 Fall 2023
 Assignment 1 – Card Game
-Name Daniel Kaijzer
-Date 11/08/23
+Name
+Date
 Hand.cpp Defines the Hand class.
 */
 

@@ -12,10 +12,10 @@
 #include "Hand.hpp"
 #include <algorithm>
 
-Hand::Hand(){} // default is sufficient for creating deque of PointCards
+Hand::Hand(){} // default constructor
 
 Hand::~Hand(){
-    cards_.clear(); // empty hand
+    cards_.clear();
 }
 
 Hand::Hand(const Hand& other){
@@ -42,8 +42,7 @@ const std::deque<PointCard>& Hand::getCards() const{
 
 void Hand::addCard(PointCard&& card){
     cards_.push_back(std::move(card));
-    // if card is drawn from deck, setDrawn is true
-    cards_.back().setDrawn(true);
+    cards_.back().setDrawn(true); // card has been drawn from Deck to hand
 }
 
 bool Hand::isEmpty() const{
@@ -51,8 +50,7 @@ bool Hand::isEmpty() const{
 }
 
 void Hand::Reverse(){
-
-    // reverse deque using a stack
+    // reverses deque using a stack
 
     std::stack<PointCard> tmp;
 
@@ -76,16 +74,16 @@ void Hand::Reverse(){
 int Hand::PlayCard(){
 
     if (!isEmpty()){
-        // card is playable if drawn and has valid instruction
+        // check if card is playable (i.e., has valid instruction and is drawn)
         bool playable = cards_.front().isPlayable();
 
         std::string instr = cards_.front().getInstruction();
 
-        // if card is played from hand, remove from hand
+        // remove card from hand when played
         cards_.pop_front();
 
         if (playable){
-            return std::stoi(instr); // return point value of PointCard
+            return std::stoi(instr); // return points from PointCard
         }
     }
     // can't play card if there isn't one in Hand

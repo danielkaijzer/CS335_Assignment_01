@@ -1,15 +1,15 @@
 /**
  * @file PointCard.cpp
  * @author Daniel Kaijzer
- * @brief PointCard implementation
- * @date 2023-11-08
+ * @brief 
+ * @version 0.1
+ * @date 2023-09-23
  * 
  * @copyright Copyright (c) 2023
  * 
  */
 
 #include "PointCard.hpp"
-#include <regex>
 
 /**
  * @post: Construct a new Point Card object
@@ -47,18 +47,19 @@ bool PointCard::isPlayable(){
  */
 void PointCard::Print() const{
 
-    std::cout << "Type: " << getType() << std::endl;
-    std::cout << "Points: "<< getInstruction() << std::endl;
+    std::cout << "Type: " << this->getType() << std::endl;
+    std::cout << "Points: "<< this->getInstruction() << std::endl;
     std::cout << "Card: " << std::endl;
 
     // iterate through bitmap array and print all 80 values
     // only if there is data there
     if (getImageData() != nullptr){
-        for (size_t i = 0; i < 80; i++)
-            std::cout << getImageData()[i] << " ";
+        for (int i = 0; i < 80; ++i){
+            std::cout << *getImageData();
+        }
     }
     else{
         std::cout << "No image data";
     }
-    std::cout << std::endl;
+    std::cout << "\n";
 }

@@ -1,9 +1,9 @@
 /*
 CSCI335 Fall 2023
 Assignment 1 – Card Game
-Name Daniel Kaijzer
-Date 11/08/2023
-Deck.hpp defines the Deck class and implements it.
+Name
+Date
+Deck.hpp defines the Deck class.
 */
 #ifndef DECK_HPP
 #define DECK_HPP
@@ -22,13 +22,13 @@ class Deck
         /**
          * @post: Construct a new Deck object
          */
-        Deck() = default; // default is sufficient to construct vector of CardType objects
+        Deck() = default; // works for this function, will construct vector of CardType
 
         /**
          * @post: Destroy the Deck object 
          */
         ~Deck(){
-            cards_.clear(); // empty deck
+            cards_.clear(); // empty vector
         }
 
         /**
@@ -46,13 +46,12 @@ class Deck
          */
         CardType&& Draw(){
             if (!IsEmpty()){
-                // must return rvalue
+                // need to return rvalue reference
                 CardType &&drawn_card = std::move(cards_.back());
-
-                cards_.pop_back(); // card is drawn, remove from deck
+                cards_.pop_back(); // if drawn, need to remove from deck
                 return (std::move(drawn_card));
             }
-            // can't draw from empty deck
+            // Can't draw from empty deck, throw exception
             throw std::runtime_error("Deck is empty");
         }
 

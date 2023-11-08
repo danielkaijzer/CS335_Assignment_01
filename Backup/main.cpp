@@ -19,23 +19,33 @@
 // use to run: clang++ -std=c++17 main.cpp Card.cpp PointCard.cpp ActionCard.cpp Hand.cpp Player.cpp -L. -o main
 
 int main() {
+
+  std::string s = "DRAW 5 CARDS";
+
+  // std::string sub = s.at(5);
+  int num = s.at(5) - 48;
+
+  std::cout << num << std::endl;
+
+
+
   // Create a new PointCard object
-  PointCard pc1;
+  // PointCard pc1;
 
-  Deck<PointCard> *d1 = new Deck<PointCard>();
+  // Deck<PointCard> *d1 = new Deck<PointCard>();
 
-  pc1.setInstruction("5");
-  // pc1.Print();
+  // pc1.setInstruction("5");
+  // // pc1.Print();
 
-  PointCard pc2 = pc1;
-  pc2.setInstruction("3");
-  // pc2.Print();
+  // PointCard pc2 = pc1;
+  // pc2.setInstruction("3");
+  // // pc2.Print();
 
-  d1->AddCard(pc1);
-  d1->AddCard(pc2);
-  // std::cout << d1->getSize() << std::endl;
+  // d1->AddCard(pc1);
+  // d1->AddCard(pc2);
+  // // std::cout << d1->getSize() << std::endl;
 
-  Hand h1;
+  // Hand h1;
 
 
   // h1.addCard(d1->Draw());
@@ -48,13 +58,13 @@ int main() {
   //   std::cout << score << std::endl;
   // }
 
-  Player p1;
-  p1.setHand(h1);
-  p1.setPointDeck(d1);
-  p1.drawPointCard();
-  p1.playPointCard();
+  // Player p1;
+  // p1.setHand(h1);
+  // p1.setPointDeck(d1);
+  // p1.drawPointCard();
+  // p1.playPointCard();
 
-  std::cout <<  p1.getScore() << std::endl;
+  // std::cout <<  p1.getScore() << std::endl;
 
 
   // ActionCard ac1;

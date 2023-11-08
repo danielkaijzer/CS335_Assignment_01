@@ -1,9 +1,19 @@
+/**
+ * @file Player.cpp
+ * @author Daniel Kaijzer
+ * @brief Player implementation
+ * @version 0.1
+ * @date 2023-09-22
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 #include "Player.hpp"
 
 Player::Player(){
     score_ = 0;
     hand_ = Hand();
-
     opponent_ = nullptr;
     actiondeck_ = nullptr;
     pointdeck_ = nullptr;
@@ -13,9 +23,7 @@ Player::Player(){
  * @post: Destroy the Player object
  */
 Player::~Player(){
-    // hand_.~Hand();
     score_ = 0;
-
     opponent_ = nullptr;
     actiondeck_ = nullptr;
     pointdeck_ = nullptr;
@@ -24,7 +32,8 @@ Player::~Player(){
 /**
  * @return the player's hand
  */
-const Hand& Player::getHand() const{
+const Hand& Player::getHand() const
+{
     return hand_;
 }
 
@@ -32,19 +41,25 @@ const Hand& Player::getHand() const{
  * @post: Set the player's hand
  * @param const reference to a hand object
  */
-void Player::setHand(const Hand& hand){
-    hand_ = hand;
+void Player::setHand(const Hand& hand)
+{
+    hand_ = std::move(hand);
 }
 
 /**
  * @return the Player's current score
  */
-int Player::getScore() const{
+int Player::getScore() const
+{
     return score_;
-
 }
 
-void Player::setScore(const int& score){
+/**
+ * @post: Set the player's score
+ * @param: score 
+ */
+void Player::setScore(const int& score)
+{
     score_ = score;
 }
 
@@ -54,48 +69,50 @@ void Player::setScore(const int& score){
  * Begin the function by reporting the instruction of the card:
  * PLAYING ACTION CARD: [instruction]
  */
-void Player::play(ActionCard&& card){
+void Player::play(ActionCard&& card)
+{
+    std::string instr = card.getInstruction();
+    std::cout << "PLAYING ACTION CARD: " << instr << std::endl;
 
-    // first check if card is playable
-    if (card.isPlayable()){
-
-        std::string instr = card.getInstruction();
-
-        std::cout << "PLAYING ACTION CARD: " << instr << std::endl;
-
-        // IF PLAY INSTRUCTION, PLAY POINTCARD(S)
-        if (instr.substr(0,4) == "PLAY"){
-            int num = std::stoi(instr.substr(5,1));
-            for (int i=0; i<num; ++i){
-                this->playPointCard();
-            }
-        }
-        // ELSE IF DRAW INSTRUCTION, DRAW POINTCARD(S)
-        else if (instr.substr(0,4) == "DRAW"){
-            int num = std::stoi(instr.substr(5,1));
-            for (int i = 0; i < num; ++i){
-                this->drawPointCard();
-            }
-        }
-        // ELSE IF REVERSE
-        else if(instr.substr(0,7) == "REVERSE"){
-            this->hand_.Reverse();
-        }
-        // ELSE IF SWAP
-        else if(instr.substr(0,4) == "SWAP"){
-            Hand temp = this->hand_;
-            this->hand_ = opponent_->getHand();
-            opponent_->setHand(temp);
-        }
+    // IF DRAW INSTRUCTION
+    if (instr.substr(0,4) == "DRAW")
+    {
+        // GET NUMBER VALUE AND CONVERT TO INT (CAN BE BETWEEN 1 AND 99 INCLUSIVE)
+        int num = std::stoi(instr.substr(instr.find(' ')+1, instr.find('C')-1));
+        
+        // DRAW NUM OF CARDS SPECIFIED IN INSTRUCTION
+        for (int i = 0; i < num; ++i)
+            drawPointCard();
     }
-    // if card isn't playable do nothing
+    // IF PLAY INSTRUCTION
+    else if (instr.substr(0,4) == "PLAY")
+    {
+        // GET NUMBER VALUE AND CONVERT TO INT (CAN BE BETWEEN 1 AND 99 INCLUSIVE)
+        int num = std::stoi(instr.substr(instr.find(' ')+1, instr.find('C')-1));
+        // DRAW NUM OF CARDS SPECIFIED IN INSTRUCTION
+        for (int i = 0; i < num; ++i)
+            playPointCard();
+    }
+    // IF REVERSE INSTRUCTION
+    else if (instr.substr(0,7) == "REVERSE")
+    {
+        hand_.Reverse();
+    }
+    // IF SWAP INSTRUCTION
+    else if(instr.substr(0,4) == "SWAP")
+    {
+        Hand temp = this->hand_;
+        hand_ = opponent_->getHand();
+        opponent_->setHand(temp);
+    }
 }
+
 
 /**
  * @post: Draw a point card and place it in the player's hand
  */
 void Player::drawPointCard(){
-    if (pointdeck_ && !pointdeck_->IsEmpty()){
+    if (!pointdeck_->IsEmpty()){
         this->hand_.addCard(std::move(pointdeck_->Draw()));
     }
 }
@@ -121,24 +138,35 @@ void Player::setOpponent(Player* opponent){
  */
 Player* Player::getOpponent(){
     return opponent_;
-
 }
 
+/**
+ * @post: set the action deck of the player 
+ * @param: A pointer to a deck holding Action cards 
+ */
 void Player::setActionDeck(Deck<ActionCard>* actiondeck){
     actiondeck_ = std::move(actiondeck);
 }
 
-
+/**
+ * @return a pointer to the player's action deck
+ */
 Deck<ActionCard>* Player::getActionDeck(){
     return this->actiondeck_;
 }
 
-
+/**
+ * @post: set the point deck of the player
+ * @param: A pointer to a deck holding Point cards
+ */
 void Player::setPointDeck(Deck<PointCard>* pointdeck){
     pointdeck_ = std::move(pointdeck);
 }
 
+/**
+ * @return: a pointer to the player's point deck
+ */
 Deck<PointCard>* Player::getPointDeck(){
     return this->pointdeck_;
-
 }
+

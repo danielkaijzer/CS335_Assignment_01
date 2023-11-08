@@ -1,8 +1,9 @@
 /**
  * @file Card.cpp
  * @author Daniel Kaijzer
- * @brief Card (abstract class) implementation
- * @date 2023-09-22
+ * @brief Implementation file for "Card" class
+ * @version 0.3
+ * @date 2023-09-17
  * 
  * @copyright Copyright (c) 2023
  * 
@@ -30,17 +31,7 @@ Card::Card(const Card & rhs){
     cardType_ = rhs.cardType_;
     instruction_ = rhs.instruction_;
     drawn_ = rhs.drawn_;
-
-    // check if rhs.bitmap has data before copying
-    if (rhs.bitmap_ == nullptr){
-        bitmap_ = nullptr;
-    }
-    else
-    {
-        bitmap_ = new int[80];
-        for (int i = 0; i < 80; ++i)
-            bitmap_[i] = rhs.bitmap_[i];
-    }
+    bitmap_ = rhs.bitmap_;
 }
 
 /**
@@ -48,29 +39,12 @@ Card::Card(const Card & rhs){
  * @param const reference to a Card object
  * @return this Card object
  */
-Card& Card::operator=(const Card& rhs)
-{
+Card & Card::operator=(const Card& rhs){
     cardType_ = rhs.cardType_;
     instruction_ = rhs.instruction_;
     drawn_ = rhs.drawn_;
+    bitmap_ = rhs.bitmap_;
 
-    // clear current bitmap data before copying
-    if (bitmap_ != nullptr){
-        delete[] bitmap_;
-    }
-
-    // check if rhs.bitmap has data before copying
-    if (rhs.bitmap_ != nullptr)
-    {
-        bitmap_ = new int[80];
-    
-        for (size_t i = 0; i < 80; i++)
-            bitmap_[i] = rhs.bitmap_[i];
-    }
-    else{
-        bitmap_ = nullptr;
-    }
-    
     return *this;
 }
 
@@ -88,7 +62,6 @@ Card::Card(Card && rhs){
     rhs.instruction_ ="";
     rhs.drawn_ = false;
     rhs.bitmap_ = nullptr;
-
 }
 
 /**
@@ -96,11 +69,16 @@ Card::Card(Card && rhs){
  * @param: rvalue reference to a Card object
  * @return this card object
 */
-Card& Card::operator=(Card&& rhs)
-{
+Card & Card::operator=(Card && rhs){
+
     cardType_ = std::move(rhs.cardType_);
     instruction_ = std::move(rhs.instruction_);
     drawn_ = std::move(rhs.drawn_);
+    
+    // Delete the current bitmap if it's not owned by this object
+    if (bitmap_ != rhs.bitmap_) {
+        delete[] bitmap_;
+    }
     bitmap_ = std::move(rhs.bitmap_);
 
     // reset moved-from object members
@@ -148,7 +126,6 @@ void Card::setType(const CardType& type){
  */
 void Card::setInstruction(const std::string& instruction){
     instruction_ = instruction;
-
 }
 
 /**

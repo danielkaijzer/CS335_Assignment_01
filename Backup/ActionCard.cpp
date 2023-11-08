@@ -1,8 +1,9 @@
 /**
  * @file ActionCard.cpp
  * @author Daniel Kaijzer
- * @brief ActionCard implementation
- * @date 2023-11-08
+ * @brief 
+ * @version 0.1
+ * @date 2023-09-22
  * 
  * @copyright Copyright (c) 2023
  * 
@@ -29,22 +30,21 @@ ActionCard::ActionCard() : Card(){
  * SWAP HAND WITH OPPONENT : swap the hand with the opponent
 */
 bool ActionCard::isPlayable(){
-    // check if card has been drawn
     if (getDrawn()){
 
-        // check if it's one of the four valid instruction types
+        std::string instr = getInstruction();
+
+        // check if it's one of the four instruction types
         if(
-            getInstruction().substr(0,4) == "DRAW"
-            || getInstruction().substr(0,4) == "PLAY"
-            || getInstruction().substr(0,7) == "REVERSE"
-            || getInstruction().substr(0,4) == "SWAP")
+            instr.substr(0,4) == "DRAW"
+            || instr.substr(0,4) == "PLAY"
+            || instr.substr(0,7) == "REVERSE"
+            || instr.substr(0,4) == "SWAP")
         {
             return true;
         }
     }
-
     return false;
-
 }
 
 /**
